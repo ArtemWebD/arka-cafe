@@ -1,0 +1,22 @@
+.footer {
+  background-color: $footer-black;
+  padding: 80px 0 25px 0;
+
+  &__rights {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    line-height: 22.4px;
+    margin-top: 100px;
+    color: $brown;
+    white-space: nowrap;
+
+    &__copyright {
+      padding-right: 21px;
+    }
+
+    &__offer {
+      padding-left: 21px;
+    }
+  }
+}

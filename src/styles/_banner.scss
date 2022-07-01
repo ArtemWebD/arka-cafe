@@ -1,0 +1,51 @@
+.banner {
+  padding: 0;
+
+  &__wrapper {
+    padding: 0 70px;
+  }
+
+  &__body {
+    background-color: $pale-3;
+    padding: 58px 0 81px 0;
+    display: flex;
+    position: relative;
+
+    &__text, &__image {
+      width: 50%;
+    }
+
+    &__text {
+      h2 {
+        max-width: 223px;
+      }
+
+      &__subtitle {
+        max-width: 322px;
+        margin-top: 22px;
+      }
+
+      &__button {
+        margin-top: 22px;
+      }
+    }
+
+    &__image {
+      position: relative;
+
+      img {
+        position: absolute;
+        left: 12%;
+        top: -50%;
+      }
+    }
+
+    &::after {
+      content: url('../img/weave_3.svg');
+      display: block;
+      position: absolute;
+      right: -6%;
+      top: -13.5%;
+    }
+  }
+}

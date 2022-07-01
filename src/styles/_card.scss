@@ -1,0 +1,52 @@
+.card {
+  padding: 0 10px;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 58px 0 37px 0;
+    width: 330px;
+    height: 100%;
+    text-align: center;
+    position: relative;
+    border: 1px solid $brown;
+
+    h3 {
+      max-width: 136px;
+      font-family: "Raleway";
+      font-weight: 700;
+    }
+
+    &__subtitle {
+      margin-top: 22px;
+      max-width: 263px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 70px;
+      height: 70px;
+      border: 1px solid $dark-brown;
+      border-radius: 50%;
+      background-color: $semi-brown;
+      background-image: url('../img/star.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      position: absolute;
+      // left: 38%;
+      left: 50%;
+      transform: translateX(-50%);
+      top: -15%;
+    }
+  }
+
+  &:first-child {
+    padding-left: 0;
+  }
+
+  &:last-child {
+    padding-right: 0;
+  }
+}

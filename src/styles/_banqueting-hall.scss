@@ -1,0 +1,13 @@
+.banqueting-hall.service {
+  .service__body {
+    &__text {
+      h2 {
+        max-width: 179px;
+      }
+
+      &__subtitle {
+        max-width: 410px;
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+.navbar {
+  padding: 35px 70px 28px 70px;
+  border-top: 2px solid $brown;
+  border-bottom: 2px solid $brown;
+
+  ul {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    li {
+      a {
+        display: inline-block;
+        white-space: nowrap;
+        font-size: 20px;
+        line-height: 24px;
+        font-family: "Bebas Neue";
+        color: $dark-brown;
+        transition: .2s linear;
+
+        &:hover {
+          transform: scale(1.25);
+        }
+
+        &:active {
+          color: $brown;
+        }
+      }
+
+      &:first-child, &:nth-child(2) {
+        padding-right: 144px;
+      }
+
+      &:nth-child(3), &:nth-child(4) {
+        padding-right: 169px;
+      }
+    }
+  }
+}

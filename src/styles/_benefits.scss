@@ -1,0 +1,19 @@
+.benefits {
+  padding: 190px 0 150px 0;
+
+  &__title {
+    text-align: center;
+  }
+
+  &__cards {
+    margin-top: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    
+    h3 {
+      text-transform: uppercase;
+    }
+  }
+}

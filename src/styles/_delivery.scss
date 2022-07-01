@@ -1,0 +1,17 @@
+.delivery.service {
+  .service__body {
+    &__image {
+      padding-right: 70px;
+    }
+
+    &__text {
+      h2 {
+        max-width: 270px;
+      }
+
+      &__subtitle {
+        max-width: 400px;
+      }
+    }
+  }
+}
