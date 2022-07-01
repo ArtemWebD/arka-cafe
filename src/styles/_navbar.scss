@@ -1,8 +1,4 @@
 .navbar {
-  padding: 35px 70px 28px 70px;
-  border-top: 2px solid $brown;
-  border-bottom: 2px solid $brown;
-
   ul {
     width: 100%;
     display: flex;
@@ -26,13 +22,37 @@
           color: $brown;
         }
       }
+    }
+  }
 
+  &__main {
+    padding: 35px 70px 28px 70px;
+    border-top: 2px solid $brown;
+    border-bottom: 2px solid $brown;
+
+    li {
       &:first-child, &:nth-child(2) {
         padding-right: 144px;
       }
 
       &:nth-child(3), &:nth-child(4) {
         padding-right: 169px;
+      }
+    }
+  }
+
+  &__subnav {
+    padding: 50px 70px 0 70px;
+
+    li {
+      padding: 0 54px;
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        padding-right: 0;
       }
     }
   }
