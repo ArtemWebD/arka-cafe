@@ -1,0 +1,108 @@
+.modal {
+  position: fixed;
+  max-height: calc(100% - 200px);
+  max-width: fit-content;
+  z-index: -1;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  overflow-y: scroll;
+  
+  &__body {
+    max-width: 610px;
+    margin: 0 auto;
+    padding: 220px 50px 70px 50px;
+    background-color: $pale-3;
+    border-top-left-radius: 318.5px;
+    border-top-right-radius: 318.5px;
+    transition: 2s ease-in;
+  }
+
+  &__close {
+    display: block;
+    width: 41px;
+    height: 41px;
+    cursor: pointer;
+    background-image: url('../img/close.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    right: 0%;
+    top: 0%;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
+.modal.modal-enter {
+  z-index: 11;
+  animation: openModal .3s forwards;
+
+  @keyframes openModal {
+    0% {
+      top: 0;
+      opacity: 0;
+    }
+
+    100% {
+      top: 50%;
+      opacity: 1;
+    }
+  }
+}
+
+.modal.modal-active {
+  top: 50%;
+  opacity: 1;
+  z-index: 11;
+}
+
+.modal.modal-close {
+  animation: closeModal .3s forwards;
+
+  @keyframes closeModal {
+    0% {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
+
+    50% {
+      transform: translate(-50%, -65%);
+      opacity: .6;
+    }
+
+    100% {
+      transform: translate(-50%, -75%);
+      opacity: 0;
+    }
+  }
+}
+
+.modal.no-animation {
+  transition: none!important;
+  animation: none!important;
+}
+
+.blur {
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(125.4% 125.4% at 0% 0%, rgba(156, 144, 106, 0.1) 0%, rgba(245, 242, 233, 0) 100%);
+  animation: blurAppearance .2s .4s forwards;
+
+  @keyframes blurAppearance {
+    from {
+      backdrop-filter: blur(0px);
+    }
+
+    to {
+      backdrop-filter: blur(10px);
+    }
+  }
+}

@@ -5,6 +5,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const isDev = process.env.NODE_ENV === "development" ? true : false
 const isProd = !isDev
@@ -54,7 +55,11 @@ const config = {
                 {
                     from: path.resolve(__dirname, "src/img"),
                     to: path.resolve(__dirname, "dist/img")
-                }
+                },
+                {
+                    from: path.resolve(__dirname, "src/fonts"),
+                    to: path.resolve(__dirname, "dist/fonts")
+                },
             ]
         }),
         new MiniCssExtractPlugin({
@@ -68,9 +73,14 @@ const config = {
                 exclude: /node_modules/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    "css-loader",
+                    {
+                        loader: "css-loader",
+                        options: {
+                            url: false,
+                        },
+                    },
                     "sass-loader",
-                ]
+                ],
             },
             {
                 test: /\.css$/,
@@ -79,10 +89,6 @@ const config = {
                     MiniCssExtractPlugin.loader,
                     "css-loader"
                 ]
-            },
-            {
-                test: /\.(ttf|woff|woff2|eot)$/,
-                type: "asset/resource"
             },
             {
                 test: "/\.js$/",

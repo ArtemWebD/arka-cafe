@@ -20,38 +20,65 @@
     &__image {
       width: 100%;
       height: 324px;
+      cursor: pointer;
 
       img {
         max-width: 100%;
         max-height: 100%;
         object-fit: cover;
       }
+
+      &:hover ~ .dishes__item__button {
+        .btn {
+          &::after {
+            margin-left: 30px;
+          }
+        }
+      }
     }
 
     &__title {
-      margin-top: 30px;
+      margin: 12px 0 10px 0;
+      height: 54px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      overflow: hidden;
+      cursor: pointer;
+
+      h3 {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      &:hover ~ .dishes__item__button {
+        .btn {
+          &::after {
+            margin-left: 30px;
+          }
+        }
+      }
     }
 
     &__price {
-      margin-top: 15px;
+      cursor: pointer;
+
+      &:hover ~ .dishes__item__button {
+        .btn {
+          &::after {
+            margin-left: 30px;
+          }
+        }
+      }
     }
 
     &__button {
-      margin-top: 25px;
+      margin-top: 20px;
     }
 
     &__basket-button {
-      margin-top: 12px;
-
-      .basket-button {
-        display: flex;
-
-        &::after {
-          content: url('../img/basket.svg');
-          display: block;
-          margin-left: 20px;
-        }
-      }
+      margin-top: 10px;
     }
 
     &:nth-child(3n+1) {
@@ -66,4 +93,86 @@
       margin-top: 0;
     }
   }
+}
+
+.dishes-modal {
+  &__body {
+    padding: 80px;
+
+    &__image {
+      width: 100%;
+      height: 400px;
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__title {
+      margin-top: 50px;
+    }
+
+    &__weight {
+      margin-top: 15px;
+    }
+
+    &__description {
+      margin-top: 15px;
+      max-width: 450px;
+    }
+
+    &__price {
+      color: $dark-brown;
+      margin-top: 15px;
+    }
+
+    &__button {
+      margin-top: 25px;
+    }
+
+    &__count {
+      margin-top: 25px;
+      display: flex;
+      width: 102px;
+      justify-content: space-between;
+      align-items: center;
+
+      .minus, .plus {
+        width: 32px;
+        height: 32px;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+      }
+
+      .minus {
+        background-image: url('../img/minus.svg');
+      }
+
+      .plus {
+        background-image: url('../img/plus.svg');
+      }
+    }
+  }
+}
+
+.dishes-modal {
+  transform: translate(0, 0) scale(0.5);
+  opacity: 0;
+  transform-origin: left top;
+  transition: .3s ease-in;
+}
+
+.dishes-modal.modal-enter, .dishes-modal.modal-active {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  z-index: 11;
+  top: 50%!important;
+  left: 50%!important;
+}
+
+.dishes-modal.modal-close {
+  animation: none;
 }

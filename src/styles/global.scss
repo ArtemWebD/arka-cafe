@@ -1,14 +1,16 @@
 @import "colors";
 @import "fonts";
-@import "header";
 @import "navbar";
+@import "card";
+@import "modal";
+@import "feedback";
 @import "service";
+@import "header";
 @import "banqueting-hall";
 @import "delivery";
 @import "galery";
 @import "banner";
 @import "benefits";
-@import "card";
 @import "dishes";
 @import "footer";
 
@@ -79,6 +81,54 @@ button {
   font-family: 'Raleway';
 }
 
+input {
+  border: none;
+  border-bottom: 2px solid $brown;
+  font-family: 'Raleway';
+  font-weight: 400;
+  color: $black;
+  font-size: 16px;
+  outline: none;
+  width: 200px;
+  padding-bottom: 10px;
+  background: transparent;
+
+  &::placeholder {
+    font-family: 'Raleway';
+    font-weight: 400;
+    color: $black;
+    font-size: 16px;
+  }
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+input[type=checkbox] + label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 15px;
+    height: 15px;
+    margin-right: 15px;
+    border: 1px solid $brown;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+input[type=checkbox]:checked + label {
+  &::before {
+    background-image: url('../img/check-mark.svg');
+  }
+}
+
 .container {
   width: 1210px;
   margin: 0 auto;
@@ -129,5 +179,15 @@ button {
     &::after {
       margin-left: 30px;
     }
+  }
+}
+
+.basket-button {
+  display: flex;
+
+  &::after {
+    content: url('../img/basket.svg');
+    display: block;
+    margin-left: 20px;
   }
 }
