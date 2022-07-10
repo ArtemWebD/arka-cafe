@@ -60,8 +60,8 @@ export class Modal {
   _listenTriggers() {
     const body = this.config.body || document;
     body.addEventListener('click', (event) => {
-      const id = event.target.dataset.modal;
-      const action = event.target.dataset.action;
+      const id = event.target.dataset?.modal;
+      const action = event.target.dataset?.action;
 
       if (id === this.config.id && action === 'open') {
         event.preventDefault();
@@ -71,8 +71,8 @@ export class Modal {
     });
 
     document.addEventListener('click', (event) => {
-      const id = event.target.dataset.modal;
-      const action = event.target.dataset.action;
+      const id = event.target.dataset?.modal;
+      const action = event.target.dataset?.action;
 
       if (id === this.config.id && action === 'close') {
         event.preventDefault();

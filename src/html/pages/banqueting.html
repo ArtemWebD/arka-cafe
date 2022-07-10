@@ -1,0 +1,169 @@
+<%
+  var headerData = {
+    title: 'Банкетный зал',
+    subtitle: `
+      <div class="header__body__button">
+        <button class="btn" data-modal="feedback" data-action="open">
+          Забронировать
+        </button>
+      </div>
+    `,
+    img: 'header_img_2.png',
+    subnav: null,
+    modificator: 'header_banqueting',
+  }
+%>
+<%=_.template(require('../views/header.html').default)(headerData)%>
+
+<main>
+  <section class="hall-description service">
+    <div class="container">
+      <div class="service__body">
+        <div class="service__body__text">
+          <div class="service__body__text__title">
+            <h2>
+              описание зала
+            </h2>
+          </div>
+          <div class="service__body__text__description-title">
+            <span>
+              Характеристики:
+            </span>
+          </div>
+          <div class="service__body__text__subtitle">
+            <span>
+              Все очень вкусно приготовлено и изящно оформлено на специальной посуде нашими профессиональными поварами все очень вкусно приготовлено и изящно оформлено на специальной посуде нашими профессиональными  приготовлено и изящно
+            </span>
+          </div>
+        </div>
+        <div class="service__body__image">
+          <img src="img/hall_description.png" alt="Описание зала" class="animated-img">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="slider-block hall-photo">
+    <div class="container">
+      <div class="slider-block__title">
+        <h2>
+          Фотографии зала
+        </h2>
+      </div>
+      <div class="slider-block__description">
+        <span>
+          Приглашаем провести у нас любое праздничное и торжественное мероприятие. Стильная и уютная атмосфера в сочетании с оригинальным оформлением зала
+        </span>
+      </div>
+      <div class="slider-block__body">
+        <div class="slider-block__body__wrapper">
+          <div class="swiper-container hall-photo__slider">
+            <div class="swiper-wrapper">
+              <%
+                const photoSlides = [
+                  { content: '<img src="img/hall_photo_1.png" alt="Фото зала">', className: null, },
+                  { content: '<img src="img/hall_photo_2.png" alt="Фото зала">', className: null, },
+                ];
+              %>
+    
+              <% photoSlides.forEach((photoSlide) => {%>
+                <%=_.template(require('../views/slide.html').default)(photoSlide)%>
+              <%})%>
+            </div>
+            <div class="swiper-navigation swiper-button-prev"></div>
+            <div class="swiper-navigation swiper-button-next"></div>
+          </div>
+        </div>
+      </div>
+      <div class="hall-photo__button">
+        <button class="btn" data-modal="feedback" data-action="open">
+          Забронировать
+        </button>
+      </div>
+    </div>
+  </section>
+  <section class="slider-block banquet-menu">
+    <div class="container">
+      <div class="slider-block__title">
+        <h2>
+          Банкетное меню
+        </h2>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="slider-block__body">
+        <div class="slider-block__body__wrapper">
+          <div class="swiper-container banquet-menu__slider">
+            <div class="swiper-wrapper">    
+              <% for (let i = 1; i <= 20; i++) {%>
+                <%
+                  const menuSlide = `
+                    <div class='slide__number'>
+                      ${i}
+                    </div>
+                    <div class="slide__image" data-modal="image-modal" data-action="open">
+                      <img src="img/banquet_menu.png" alt="Банкетное меню" data-modal="image-modal" data-action="open">
+                    </div>
+                  `;
+                %>
+                <%=_.template(require('../views/slide.html').default)({ content: menuSlide, className: 'banquet-menu__slide' })%>
+              <%}%>
+            </div>
+            <div class="swiper-navigation swiper-button-prev"></div>
+            <div class="swiper-navigation swiper-button-next"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%=_.template(require('../views/banner.html').default)({ modal: 'feedback' })%>
+
+  <section class="events">
+    <div class="container">
+      <div class="events__body">
+        <%
+          const eventCards = [
+            {
+              className: 'events__body__card',
+              title: 'Корпоративные мероприятия',
+              subtitle: null,
+            },
+            {
+              className: 'events__body__card',
+              title: 'юбилеи',
+              subtitle: null,
+            },
+            {
+              className: 'events__body__card',
+              title: 'свадьбы',
+              subtitle: null,
+            },
+            {
+              className: 'events__body__card',
+              title: 'деловые встречи',
+              subtitle: null,
+            },
+            {
+              className: 'events__body__card',
+              title: 'дни<br>рождения',
+              subtitle: null,
+            },
+            {
+              className: 'events__body__card',
+              title: 'тематические вечеринки',
+              subtitle: null,
+            },
+          ];
+        %>
+
+        <% eventCards.forEach((eventCard) => {%>
+          <%=_.template(require('../views/card.html').default)(eventCard)%>
+        <%})%>
+      </div>
+    </div>
+  </section>
+</main>
+
+<%=_.template(require('../views/modal.html').default)({ id: 'feedback' })%>
+<%=_.template(require('../views/modal.html').default)({ id: 'image-modal' })%>
+  
+<%=_.template(require('../views/footer.html').default)()%>

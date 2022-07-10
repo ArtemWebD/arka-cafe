@@ -15,8 +15,8 @@ export class Counter {
 
   _setListeners() {
     document.onclick = (event) => {
-      const id = event.target.dataset.counter;
-      const action = event.target.dataset.action;
+      const id = event.target.dataset?.counter;
+      const action = event.target.dataset?.action;
 
       if (id === this.config.id && action === 'plus') {
         event.preventDefault();

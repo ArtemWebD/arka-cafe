@@ -1,6 +1,4 @@
 .dishes {
-  padding-bottom: 210px;
-
   &__title {
     padding: 0 70px;
     margin-bottom: 55px;
@@ -96,6 +94,11 @@
 }
 
 .dishes-modal {
+  transform: translate(0, 0) scale(0.5);
+  opacity: 0;
+  transform-origin: left top;
+  transition: .3s ease-in;
+
   &__body {
     padding: 80px;
 
@@ -156,13 +159,6 @@
       }
     }
   }
-}
-
-.dishes-modal {
-  transform: translate(0, 0) scale(0.5);
-  opacity: 0;
-  transform-origin: left top;
-  transition: .3s ease-in;
 }
 
 .dishes-modal.modal-enter, .dishes-modal.modal-active {

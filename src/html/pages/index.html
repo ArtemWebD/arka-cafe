@@ -1,0 +1,126 @@
+<%
+  const headerData = {
+    title: 'вкусная еда <br> в нашем ресторане и на доставку',
+    subtitle: `
+      <div class="header__body__button">
+        <a href="#" class="btn arrow-btn" data-modal="feedback" data-action="open">
+          Оставить заявку
+        </a>
+      </div>
+    `,
+    img: 'header_img.png',
+    subnav: null,
+    modificator: null,
+  }
+%>
+<%=_.template(require('../views/header.html').default)(headerData)%>
+<main>
+  <section class="banqueting-hall service">
+    <div class="container">
+      <div class="service__body">
+        <div class="service__body__text">
+          <h2>
+            Банкетный зал
+          </h2>
+          <div class="service__body__text__subtitle">
+            Приглашаем провести у нас любое праздничное и торжественное мероприятие. Стильная и уютная атмосфера в сочетании <br>
+            с оригинальным оформлением зала
+          </div>
+          <div class="service__body__text__link">
+            <a href="#" class="btn arrow-btn">
+              Подробнее
+            </a>
+          </div>
+        </div>
+        <div class="service__body__image">
+          <img src="img/banqueting_hall.png" alt="Банкетный зал" class="animated-img">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="delivery service service_inversion">
+    <div class="container">
+      <div class="service__body">
+        <div class="service__body__image">
+          <img src="img/delivery.png" alt="Доставка на дом" class="animated-img">
+        </div>
+        <div class="service__body__text">
+          <h2>
+            Заказать доставку на дом
+          </h2>
+          <div class="service__body__text__subtitle">
+            Все очень вкусно приготовлено и изящно оформлено на специальной посуде нашими профессиональными поварами
+          </div>
+          <div class="service__body__text__link">
+            <a href="#" class="btn arrow-btn">
+              Подробнее
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="galery">
+    <div class="container">
+      <div class="galery__body">
+        <h2>
+          Галерея
+        </h2>
+        <div class="galery__body__subtitle">
+          <span>
+            Приглашаем провести у нас любое праздничное <br>
+            и торжественное мероприятие. Стильная и уютная атмосфера в сочетании с оригинальным оформлением зала
+          </span>
+        </div>
+        <div class="galery__body__images">
+          <img src="img/galery_1.png" alt="Галерея" class="animated-img">
+          <img src="img/galery_2.png" alt="Галерея" class="animated-img">
+        </div>
+        <div class="galery__body__button">
+          <button href="#" class="btn">
+            Подробнее
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%=_.template(require('../views/banner.html').default)({ modal: 'feedback' })%>
+  
+  <section class="benefits">
+    <div class="container">
+      <div class="benefits__title">
+        <h2>
+          у нас хорошо, потому что
+        </h2>
+      </div>
+      <div class="benefits__cards">
+        <%
+          const cards = [
+            {
+              title: 'Создаем праздник',
+              subtitle: 'Любых масштабов от небольших семейных встреч до грандиозных банкетов',
+              className: 'benefit__card',
+            },
+            {
+              title: 'Отличный Банкетный зал',
+              subtitle: 'Корпоративные мероприятия, юбилеи, свадьбы, деловые встречи, дни рождения <br>и тематические вечеринки',
+              className: 'benefit__card',
+            },
+            {
+              title: 'Качественно обслуживаем',
+              subtitle: 'Профессиональные <br>и вежливые официанты, отзывчивые менеджеры <br>и администраторы',
+              className: 'benefit__card',
+            }
+          ];
+        %>
+
+        <%cards.forEach((card) => {%>
+          <%=_.template(require('../views/card.html').default)(card)%>
+        <%});%>
+      </div>
+    </div>
+  </section>
+</main>
+<%=_.template(require('../views/modal.html').default)({ id: 'feedback' })%>
+<%=_.template(require('../views/footer.html').default)()%>

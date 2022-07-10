@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <header class='header <%-modificator ? modificator : ""%>'>
+    <div class='container'>
+      <div class="header__info info">
+        <div class="info__time-and-street">
+          <div class="info__time-and-street__street">
+            <span>
+              Ул. Красный проспект, 24
+            </span>
+          </div>
+          <div class="info__time-and-street__time">
+            <span>
+              8:30 - 23:00
+            </span>
+          </div>
+        </div>
+        <div class="info__basket">
+          <a href="#" class="info__basket__btn" id="cart">
+            Корзина
+          </a>
+        </div>
+        <div class="info__phone">
+          <a href="#">
+            +7 (963) 466-12-26
+          </a>
+        </div>
+      </div>
+      <div class="header__body">
+        <div class='header__body__title'>
+          <div class="header__logo">
+            <img src="img/logo.png" alt="Logo">
+          </div>
+          <h1>
+            <%=title%>
+          </h1>
+          <%=subtitle%>
+        </div>
+        <div class='header__body__image'>
+          <img src="img/<%=img%>" alt="Арка кафе">
+        </div>
+      </div>
+      <nav class="header__navigation navbar">
+        <ul class="navbar__main">
+          <li>
+            <a href="/">
+              Главная
+            </a>
+        </li>
+          <li>
+            <a href="/banqueting.html">
+              Заказать банкет
+            </a>
+        </li>
+          <li>
+            <a href="/delivery.html">
+              Меню доставки
+            </a>
+        </li>
+          <li>
+            <a href="#">
+              Галерея
+            </a>
+        </li>
+          <li>
+            <a href="#">
+              Контакты
+            </a>
+        </li>
+        </ul>
+        <%=subnav ? subnav : ""%>
+      </nav>
+    </div>
+  </header>

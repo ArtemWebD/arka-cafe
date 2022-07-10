@@ -1,0 +1,19 @@
+.image-modal {
+  transform: translate(0, 0) scale(0.4);
+  opacity: 0;
+  transform-origin: left top;
+  transition: .3s ease-in;
+  overflow-y: auto;
+}
+
+.image-modal.modal-enter, .image-modal.modal-active {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  z-index: 11;
+  top: 50%!important;
+  left: 50%!important;
+}
+
+.image-modal.modal-close {
+  animation: none;
+}

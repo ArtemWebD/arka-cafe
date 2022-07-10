@@ -5,7 +5,6 @@
   z-index: -1;
   opacity: 0;
   transform: translate(-50%, -50%);
-  left: 50%;
   overflow-y: scroll;
   
   &__body {
@@ -36,51 +35,7 @@
   }
 }
 
-.modal.modal-enter {
-  z-index: 11;
-  animation: openModal .3s forwards;
-
-  @keyframes openModal {
-    0% {
-      top: 0;
-      opacity: 0;
-    }
-
-    100% {
-      top: 50%;
-      opacity: 1;
-    }
-  }
-}
-
-.modal.modal-active {
-  top: 50%;
-  opacity: 1;
-  z-index: 11;
-}
-
-.modal.modal-close {
-  animation: closeModal .3s forwards;
-
-  @keyframes closeModal {
-    0% {
-      transform: translate(-50%, -50%);
-      opacity: 1;
-    }
-
-    50% {
-      transform: translate(-50%, -65%);
-      opacity: .6;
-    }
-
-    100% {
-      transform: translate(-50%, -75%);
-      opacity: 0;
-    }
-  }
-}
-
-.modal.no-animation {
+.modal.no-animation, .modal.no-animation * {
   transition: none!important;
   animation: none!important;
 }

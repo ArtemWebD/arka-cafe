@@ -4,6 +4,7 @@
 @import "card";
 @import "modal";
 @import "feedback";
+@import "image-modal";
 @import "service";
 @import "header";
 @import "banqueting-hall";
@@ -12,6 +13,11 @@
 @import "banner";
 @import "benefits";
 @import "dishes";
+@import "hall-description";
+@import "slider-block";
+@import "hall-photo";
+@import "banquet-menu";
+@import "events";
 @import "footer";
 
 body {
@@ -189,5 +195,14 @@ input[type=checkbox]:checked + label {
     content: url('../img/basket.svg');
     display: block;
     margin-left: 20px;
+  }
+}
+
+.animated-img {
+  transform: scale(1);
+  transition: transform .2s linear;
+
+  &:hover {
+    transform: scale(1.05);
   }
 }

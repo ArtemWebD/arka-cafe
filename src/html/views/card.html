@@ -1,0 +1,20 @@
+<div class="<%=className%> card">
+  <div class="card__body">
+    <div class="card__body__title">
+      <h3>
+        <%=title%>
+      </h3>
+    </div>
+    <%=
+      subtitle 
+        ? `
+          <div class="card__body__subtitle">
+            <span>
+              ${subtitle}
+            </span>
+          </div>
+          `
+        : ""
+    %>
+  </div>
+</div>

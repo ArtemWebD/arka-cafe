@@ -140,3 +140,21 @@
     }
   }
 }
+
+.header_banqueting {
+  .header__body {
+    &__title {
+      padding-right: 237px;
+
+      h1 {
+        max-width: 197px;
+      }
+    }
+
+    &__button {
+      button {
+        width: 278px;
+      }
+    }
+  }
+}

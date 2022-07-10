@@ -13,7 +13,7 @@ export class Cart {
 
   _setListeners() {
     document.body.onclick = (event) => {
-      const id = event.target.dataset.cart;
+      const id = event.target.dataset?.cart;
 
       if (id === this.config.id) {
         event.preventDefault();

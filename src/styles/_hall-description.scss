@@ -1,0 +1,19 @@
+.hall-description.service {
+  .service__body {
+    &__text {
+      &__title {
+        max-width: 154px;
+      }
+
+      &__description-title {
+        color: $brown;
+        margin-top: 22px;
+      }
+
+      &__subtitle {
+        margin-top: 15px;
+        max-width: 400px;
+      }
+    }
+  }
+}

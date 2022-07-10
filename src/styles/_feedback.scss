@@ -1,5 +1,7 @@
 .feedback {
   padding: 62px;
+  top: 25%;
+  left: 50%;
   height: auto;
 
   &__body {
@@ -61,8 +63,7 @@
 }
 
 .feedback.modal-enter {
-  left: 50%;
-  transform: translate(-50%, -50%);
+  z-index: 11;
   animation: feedbackAppearance .4s forwards;
 
   @keyframes feedbackAppearance {
@@ -76,6 +77,14 @@
       opacity: 1;
     }
   }
+}
+
+.feedback.modal-active {
+  opacity: 1;
+  left: 50%;
+  top: 50%;
+  z-index: 11;
+  transform: translate(-50%, -50%);
 }
 
 .feedback.modal-close {
