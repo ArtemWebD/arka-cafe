@@ -1,0 +1,120 @@
+<%
+  var headerData = {
+    title: 'Контакты',
+    subtitle: `
+      <div class="header__body__contacts">
+        <div class="header__body__contacts__phone">
+          <span>
+            Тел: +7 (351) 247-34-87
+          </span>
+        </div>
+        <div class="header__body__contacts__timetable">
+          <span>
+            Пн - Пт:  09:00 - 18:00
+          </span>
+        </div>
+        <div class="header__body__contacts__street">
+          <span>
+            Челябинск, ул. Советская, 34
+          </span>
+        </div>
+        <div class="header__body__contacts__email">
+          <span>
+            E-mail : Арка@Кофе-Кафе.ru
+          </span>
+        </div>
+      </div>
+    `,
+    img: 'header_img_3.png',
+    subnav: null,
+    modificator: 'header_contacts',
+  }
+%>
+<%=_.template(require('../views/header.html').default)(headerData)%>
+
+<main>
+  <section class="events events_contacts">
+    <div class="container">
+      <div class="events__body">
+        <%
+          const eventCards = [
+            {
+              className: 'events__body__card',
+              title: 'Корпоративные мероприятия',
+              subtitle: null,
+            },
+            {
+              className: 'events__body__card',
+              title: 'юбилеи',
+              subtitle: null,
+            },
+            {
+              className: 'events__body__card',
+              title: 'свадьбы',
+              subtitle: null,
+            },
+            {
+              className: 'events__body__card',
+              title: 'деловые встречи',
+              subtitle: null,
+            },
+            {
+              className: 'events__body__card',
+              title: 'дни<br>рождения',
+              subtitle: null,
+            },
+            {
+              className: 'events__body__card',
+              title: 'тематические вечеринки',
+              subtitle: null,
+            },
+          ];
+        %>
+
+        <% eventCards.forEach((eventCard) => {%>
+          <%=_.template(require('../views/card.html').default)(eventCard)%>
+        <%})%>
+      </div>
+    </div>
+  </section>
+
+  <%=_.template(require('../views/banner.html').default)({ modal: 'feedback', modificator: 'banner_contacts' })%>
+
+  <section class="benefits">
+    <div class="container">
+      <div class="benefits__title">
+        <h2>
+          у нас хорошо, потому что
+        </h2>
+      </div>
+      <div class="benefits__cards">
+        <%
+          const cards = [
+            {
+              title: 'Создаем праздник',
+              subtitle: 'Любых масштабов от небольших семейных встреч до грандиозных банкетов',
+              className: 'benefit__card',
+            },
+            {
+              title: 'Отличный Банкетный зал',
+              subtitle: 'Корпоративные мероприятия, юбилеи, свадьбы, деловые встречи, дни рождения <br>и тематические вечеринки',
+              className: 'benefit__card',
+            },
+            {
+              title: 'Качественно обслуживаем',
+              subtitle: 'Профессиональные <br>и вежливые официанты, отзывчивые менеджеры <br>и администраторы',
+              className: 'benefit__card',
+            }
+          ];
+        %>
+
+        <%cards.forEach((card) => {%>
+          <%=_.template(require('../views/card.html').default)(card)%>
+        <%});%>
+      </div>
+    </div>
+  </section>
+</main>
+
+<%=_.template(require('../views/modal.html').default)({ id: 'feedback' })%>
+<%=_.template(require('../views/footer.html').default)()%>

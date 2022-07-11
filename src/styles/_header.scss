@@ -166,3 +166,15 @@
     }
   }
 }
+
+.header_contacts {
+  .header__body {
+    &__title {
+      padding-right: 265px;
+    }
+
+    &__contacts > div {
+      margin-top: 22px;
+    }
+  }
+}

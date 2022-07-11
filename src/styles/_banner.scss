@@ -7,7 +7,7 @@
 
   &__body {
     background-color: $pale-3;
-    padding: 58px 0 81px 0;
+    padding: 60px 0 109px 0;
     display: flex;
     position: relative;
 
@@ -40,7 +40,7 @@
       img {
         position: absolute;
         left: 12%;
-        top: -50%;
+        top: -57%;
       }
     }
 
@@ -48,8 +48,12 @@
       content: url('../img/weave_3.svg');
       display: block;
       position: absolute;
-      right: -6%;
-      top: -13.5%;
+      right: -3%;
+      top: -6%;
     }
   }
+}
+
+.banner_contacts {
+  padding-top: 174px;
 }
