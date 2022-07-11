@@ -158,3 +158,11 @@
     }
   }
 }
+
+.header_gallery {
+  .header__body {
+    &__title {
+      padding-right: 350px;
+    }
+  }
+}

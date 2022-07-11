@@ -1,0 +1,118 @@
+<%
+  const headerData = {
+    title: 'Галерея',
+    subtitle: '',
+    img: 'header_img.png',
+    subnav: null,
+    modificator: 'header_gallery',
+  }
+%>
+<%=_.template(require('../views/header.html').default)(headerData)%>
+
+<main>
+  <section class="gallery-images">
+    <div class="container">
+      <div class="gallery-images__body">
+        <% for (let i = 1; i <= 20; i++) {%>
+          <%=
+            `
+              <div class='gallery-images__body__item'>
+                <img src="img/gallery_images_${i}.png" alt="Галерея" data-modal="gallery-modal" data-action="open">
+              </div>
+            `
+          %>
+        <%}%>
+      </div>
+      <div class="gallery-images__button">
+        <button class="btn" data-modal="feedback" data-action="open">
+          Забронировать
+        </button>
+      </div>
+    </div>
+  </section>
+  <section class="slider-block banquet-menu">
+    <div class="container">
+      <div class="slider-block__title">
+        <h2>
+          Банкетное меню
+        </h2>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="slider-block__body">
+        <div class="slider-block__body__wrapper">
+          <div class="swiper-container banquet-menu__slider">
+            <div class="swiper-wrapper">    
+              <% for (let i = 1; i <= 20; i++) {%>
+                <%
+                  const menuSlide = `
+                    <div class='slide__number'>
+                      ${i}
+                    </div>
+                    <div class="slide__image" data-modal="image-modal" data-action="open">
+                      <img src="img/banquet_menu.png" alt="Банкетное меню" data-modal="image-modal" data-action="open">
+                    </div>
+                  `;
+                %>
+                <%=_.template(require('../views/slide.html').default)({ content: menuSlide, className: 'banquet-menu__slide' })%>
+              <%}%>
+            </div>
+            <div class="swiper-navigation swiper-button-prev"></div>
+            <div class="swiper-navigation swiper-button-next"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%=_.template(require('../views/banner.html').default)({ modal: 'feedback' })%>
+
+  <section class="events">
+    <div class="container">
+      <div class="events__body">
+        <%
+          const eventCards = [
+            {
+              className: 'events__body__card',
+              title: 'Корпоративные мероприятия',
+              subtitle: null,
+            },
+            {
+              className: 'events__body__card',
+              title: 'юбилеи',
+              subtitle: null,
+            },
+            {
+              className: 'events__body__card',
+              title: 'свадьбы',
+              subtitle: null,
+            },
+            {
+              className: 'events__body__card',
+              title: 'деловые встречи',
+              subtitle: null,
+            },
+            {
+              className: 'events__body__card',
+              title: 'дни<br>рождения',
+              subtitle: null,
+            },
+            {
+              className: 'events__body__card',
+              title: 'тематические вечеринки',
+              subtitle: null,
+            },
+          ];
+        %>
+
+        <% eventCards.forEach((eventCard) => {%>
+          <%=_.template(require('../views/card.html').default)(eventCard)%>
+        <%})%>
+      </div>
+    </div>
+  </section>
+</main>
+
+<%=_.template(require('../views/modal.html').default)({ id: 'image-modal' })%>
+<%=_.template(require('../views/modal.html').default)({ id: 'gallery-modal' })%>
+<%=_.template(require('../views/modal.html').default)({ id: 'feedback' })%>
+<%=_.template(require('../views/footer.html').default)()%>

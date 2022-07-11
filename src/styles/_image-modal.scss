@@ -1,12 +1,17 @@
-.image-modal {
+.image-modal, .gallery-modal {
   transform: translate(0, 0) scale(0.4);
   opacity: 0;
   transform-origin: left top;
   transition: .3s ease-in;
   overflow-y: auto;
+  max-width: 100%;
+
+  &__body {
+    max-width: 100%;
+  }
 }
 
-.image-modal.modal-enter, .image-modal.modal-active {
+.image-modal.modal-enter, .image-modal.modal-active, .gallery-modal.modal-enter, .gallery-modal.modal-active {
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
   z-index: 11;
@@ -14,6 +19,6 @@
   left: 50%!important;
 }
 
-.image-modal.modal-close {
+.image-modal.modal-close, .gallery-modal.modal-close {
   animation: none;
 }

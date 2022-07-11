@@ -1,8 +1,9 @@
 import { CardModal } from './modal/CardModal';
 
 export class ImageModals {
-  constructor(selectors) {
+  constructor(selectors, id = 'image-modal') {
     this._selectors = selectors;
+    this._id = id;
   }
 
   init() {
@@ -14,12 +15,12 @@ export class ImageModals {
     elements.forEach((element) => {
       const image = element.querySelector('img');
       const html = `
-        <div class='modal__body image-modal__body'>
+        <div class='modal__body ${this._id}__body'>
           <img src='${image?.src}' alt='${image?.alt}'>
         </div>
       `;
       new CardModal(element, {
-        id: 'image-modal',
+        id: this._id,
         body: element,
         html,
         openAnimationDuration: 300,

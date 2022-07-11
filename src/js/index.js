@@ -8,8 +8,10 @@ initSliders();
 
 const deliveryPage = new DeliveryPage();
 const feedbackForm = new FeedbackForm();
-const imageModals = new ImageModals(['.banquet-menu__slide'])
+const imageModals = new ImageModals(['.banquet-menu__slide']);
+const galleryModals = new ImageModals(['.gallery-images__body__item'], 'gallery-modal');
 
 deliveryPage.init();
 feedbackForm.init();
 imageModals.init();
+galleryModals.init();
