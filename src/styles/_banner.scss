@@ -37,10 +37,18 @@
     &__image {
       position: relative;
 
-      img {
+      &__wrapper {
+        width: 320px;
+        height: 408px;
+        overflow: hidden;
+        border-radius: 150px!important;
         position: absolute;
         left: 12%;
         top: -57%;
+
+        img {
+          object-position: -160px;
+        }
       }
     }
 

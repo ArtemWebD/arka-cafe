@@ -27,33 +27,7 @@ export class CartPage {
     total.innerText = new Intl.NumberFormat('ru-RU').format(this.cart.total) + ' ₽';
     body.innerHTML = '';
     Cart.orders.forEach((order) => {
-      const html = `
-        <div class="order" data-id='${order.id}'>
-          <div class="order__body">
-            <div class="order__body__image rounded">
-              <img src="${order.image}" alt="${order.title}">
-            </div>
-            <div class="order__body__title">
-              <h3>
-                ${order.title}
-              </h3>
-            </div>
-            <div class="order__body__counter counter-block" id='counter-${order.id}'>
-              <span class="minus" data-action='minus'></span>
-              <span class="counter">${order.count}</span>
-              <span class="plus" data-action='plus'></span>
-            </div>
-            <div class="order__body__price">
-              <span>
-                ${new Intl.NumberFormat('ru-RU').format(order.price * order.count)} ₽
-              </span>
-            </div>
-            <div class="order__body__button">
-              <button class="btn clear-button"></button>
-            </div>
-          </div>
-        </div>
-      `;
+      const html = this._getHtml(order);
       body.insertAdjacentHTML('beforeend', html);
       new Counter({
         id: `counter-${order.id}`,
@@ -63,6 +37,36 @@ export class CartPage {
       });
     });
     this._setRemoveListeners();
+  }
+
+  _getHtml(order) {
+    return `
+      <div class="order" data-id='${order.id}'>
+        <div class="order__body">
+          <div class="order__body__image rounded">
+            <img src="${order.image}" alt="${order.title}">
+          </div>
+          <div class="order__body__title">
+            <h3>
+              ${order.title}
+            </h3>
+          </div>
+          <div class="order__body__counter counter-block" id='counter-${order.id}'>
+            <span class="minus" data-action='minus'></span>
+            <span class="counter">${order.count}</span>
+            <span class="plus" data-action='plus'></span>
+          </div>
+          <div class="order__body__price">
+            <span>
+              ${new Intl.NumberFormat('ru-RU').format(order.price * order.count)} ₽
+            </span>
+          </div>
+          <div class="order__body__button">
+            <button class="btn clear-button"></button>
+          </div>
+        </div>
+      </div>
+    `;
   }
 
   _updateCount(id, count) {

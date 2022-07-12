@@ -44,7 +44,7 @@ export class DeliveryPage {
     const priceNumber = +price.innerText.replace('₽', '').replace(' ', '');
     return `
       <div class='modal__body dishes-modal__body'>
-        <div class='modal__body__image dishes-modal__body__image'>
+        <div class='modal__body__image dishes-modal__body__image rounded'>
           <img src='${image.src}' alt='${image.alt || ''}'>
         </div>
         <div class='modal__body__title dishes-modal__body__title'>

@@ -22,7 +22,10 @@ const modalHtml = `
 export class CartFeedback extends FeedbackForm {
   constructor() {
     super();
-    this.modal = new Modal({
+  }
+
+  _createModal() {
+    return new Modal({
       id: 'cart-feedback',
       html: modalHtml,
       openAnimationDuration: 300,
@@ -30,7 +33,7 @@ export class CartFeedback extends FeedbackForm {
       openCallback: (modal) => {
         const input = modal.querySelector('input[type=tel]');
         new InputMask(input, {
-          mask: '+7 (000) 000 00 00',
+          mask: '+7 (000) 000-00-00',
         });
 
         this._setFormListener(modal);

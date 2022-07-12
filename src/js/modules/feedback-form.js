@@ -20,7 +20,11 @@ const modalHtml = `
 
 export class FeedbackForm {
   constructor() {
-    this.modal = new Modal({
+    this.modal = this._createModal();
+  }
+
+  _createModal() {
+    return new Modal({
       id: 'feedback',
       html: modalHtml,
       openAnimationDuration: 300,
@@ -28,7 +32,7 @@ export class FeedbackForm {
       openCallback: (modal) => {
         const input = modal.querySelector('input[type=tel]');
         new InputMask(input, {
-          mask: '+7 (000) 000 00 00',
+          mask: '+7 (000) 000-00-00',
         });
 
         this._setFormListener(modal);
@@ -38,8 +42,10 @@ export class FeedbackForm {
 
   _setFormListener(modal) {
     const form = modal.querySelector('form');
+
     form.onsubmit = (event) => {
       event.preventDefault();
+
       const data = Object.values(form).reduce((acc, field) => {
         acc[field.name] = field.type === 'checkbox' ? field.checked : field.value;
         return acc;

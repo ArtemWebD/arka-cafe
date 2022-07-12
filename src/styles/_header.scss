@@ -89,6 +89,11 @@
       padding-left: 145px;
       position: relative;
 
+      &__wrapper {
+        width: 370px;
+        height: 400px;
+      }
+
       &::after {
         content: url('../img/weave_1.svg');
         position: absolute;

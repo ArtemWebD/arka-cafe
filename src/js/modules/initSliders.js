@@ -4,6 +4,7 @@ import { Navigation, Pagination, Swiper } from 'swiper';
 export const initSliders = () => {
   new Swiper('.hall-photo__slider', {
     modules: [Navigation],
+    autoHeight: true,
     slidesPerView: 2,
     loop: true,
     navigation: {

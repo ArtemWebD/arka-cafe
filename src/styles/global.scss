@@ -146,6 +146,18 @@ input[type=checkbox]:checked + label {
   padding: 0 20px;
 }
 
+.rounded {
+  border-radius: 200px 200px 0px 0px;
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+    max-width: none;
+    width: auto;
+    height: 100%;
+  }
+}
+
 .btn {
   outline: none;
   background: transparent;
