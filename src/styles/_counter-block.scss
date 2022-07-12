@@ -1,0 +1,27 @@
+.counter-block {
+  display: flex;
+  width: 102px;
+  justify-content: space-between;
+  align-items: center;
+
+  .minus, .plus {
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+  }
+
+  .minus {
+    background-image: url('../img/minus.svg');
+  }
+
+  .plus {
+    background-image: url('../img/plus.svg');
+  }
+
+  .counter {
+    width: 15px;
+    text-align: center;
+  }
+}

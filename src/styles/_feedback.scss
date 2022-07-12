@@ -1,4 +1,4 @@
-.feedback {
+.feedback, .cart-feedback {
   padding: 62px;
   top: 25%;
   left: 50%;
@@ -62,7 +62,7 @@
   }
 }
 
-.feedback.modal-enter {
+.feedback.modal-enter, .cart-feedback.modal-enter {
   z-index: 11;
   animation: feedbackAppearance .4s forwards;
 
@@ -79,7 +79,7 @@
   }
 }
 
-.feedback.modal-active {
+.feedback.modal-active, .cart-feedback.modal-active {
   opacity: 1;
   left: 50%;
   top: 50%;
@@ -87,7 +87,7 @@
   transform: translate(-50%, -50%);
 }
 
-.feedback.modal-close {
+.feedback.modal-close, .cart-feedback.modal-close {
   animation: feedbackHide .4s forwards;
 
   @keyframes feedbackHide {

@@ -5,15 +5,13 @@ import { CardModal } from "./modules/modal/CardModal";
 export class DeliveryPage {
   constructor() {
     this.items = document.querySelectorAll('.dishes__item');
-    this.cart = new Cart();
+    this.cart = new Cart({ id: 'cart' });
   }
 
   init() {
     this._setModal();
     this.items.forEach((item) => {
-      new Cart({
-        id: 'cart',
-      });
+      this._setCardListener(item, '.dishes__item', +item.dataset.id);
     });
   }
 
@@ -27,14 +25,14 @@ export class DeliveryPage {
         openAnimationDuration: 300,
         closeAnimationDuration: 300,
         body: item,
-        overlayScroll: true
-      });
-      new Counter({
-        id: 'counter',
-        min: 1
-      });
-      new Cart({
-        id: 'cart',
+        overlayScroll: true,
+        openCallback: (modal) => {
+          this._setCardListener(modal, '.dishes-modal__body', +item.dataset.id);
+          new Counter({
+            id: 'counter',
+            min: 1
+          });
+        },
       });
     });
   }
@@ -64,12 +62,29 @@ export class DeliveryPage {
         <div class='modal__body__button dishes-modal__body__button'>
           <a href='#' class='basket-button' data-cart='cart' data-price='${priceNumber}' data-count='counter' data-modal='dishes-modal' data-action='close'>Добавить в корзину</a>
         </div>
-        <div class='modal__body__count dishes-modal__body__count'>
-          <span class='minus' data-counter='counter' data-action='minus'></span>
-          <span class='counter' id='counter'>1</span>
-          <span class='plus' data-counter='counter' data-action='plus'></span>
+        <div class='modal__body__count dishes-modal__body__count counter-block' id='counter'>
+          <span class='minus' data-action='minus'></span>
+          <span class='counter'>1</span>
+          <span class='plus' data-action='plus'></span>
         </div>
       </div>
   `;
+  }
+
+  _setCardListener(item, selector, id) {
+    const button = item.querySelector('.basket-button');
+    button.onclick = (event) => {
+      event.preventDefault();
+      this.cart.add({
+        title: item.querySelector(`${selector}__title`).textContent,
+        image: item.querySelector(`${selector}__image img`).src,
+        price: +item.querySelector(`${selector}__price`)
+          .textContent
+          .replace('₽', '')
+          .replaceAll(' ', ''),
+        count: +item.querySelector('.counter')?.textContent || 1,
+        id,
+      });
+    }
   }
 }

@@ -29,12 +29,15 @@
     &__basket {
       display: flex;
       align-items: center;
+      justify-content: center;
       height: 100%;
-      padding: 0 90px 0 87px;
+      width: 291px;
       border-right: 2px solid $brown;
 
       &__btn {
         display: flex;
+        width: 143px;
+        white-space: nowrap;
 
         #products {
           color: $dark-brown;
@@ -175,6 +178,15 @@
 
     &__contacts > div {
       margin-top: 22px;
+    }
+  }
+}
+
+.header_cart {
+  .header__info {
+    
+    &::after {
+      display: none;
     }
   }
 }

@@ -1,6 +1,7 @@
 export class Counter {
   constructor(config) {
     this.config = config;
+    this.element = document.getElementById(this.config.id);
     this.count = this.config.count || 1;
     this._init();
   }
@@ -14,16 +15,15 @@ export class Counter {
   }
 
   _setListeners() {
-    document.onclick = (event) => {
-      const id = event.target.dataset?.counter;
+    this.element.onclick = (event) => {
       const action = event.target.dataset?.action;
 
-      if (id === this.config.id && action === 'plus') {
+      if (action === 'plus') {
         event.preventDefault();
         this._add();
       }
 
-      if (id === this.config.id && action === 'minus') {
+      if (action === 'minus') {
         event.preventDefault();
         this._subtract();
       }
@@ -33,6 +33,9 @@ export class Counter {
   _add() {
     this.count += 1;
     this._render();
+    if (this.config.actionCallback) {
+      this.config.actionCallback(this.count);
+    }
   }
 
   _subtract() {
@@ -41,12 +44,15 @@ export class Counter {
     }
     this.count -= 1;
     this._render();
+    if (this.config.actionCallback) {
+      this.config.actionCallback(this.count);
+    }
   }
 
   _render() {
-    const element = document.getElementById(this.config.id);
-    if (element) {
-      element.innerText = this.count;
+    const counter = this.element.querySelector('.counter');
+    if (counter) {
+      counter.innerText = this.count;
     }
   }
 }

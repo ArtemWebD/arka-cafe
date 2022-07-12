@@ -1,47 +1,81 @@
 export class Cart {
-  static total = 0;
-  static products = 0
+  static orders = [];
 
   constructor(config) {
-    this.config = config;
+    this._config = config;
     this._init();
   }
 
-  _init() {
-    this._setListeners();
+  get total() {
+    return Cart.orders.reduce((acc, value) => {
+      acc += value.count * value.price;
+      return acc;
+    }, 0);
   }
 
-  _setListeners() {
-    document.body.onclick = (event) => {
-      const id = event.target.dataset?.cart;
+  add(order) {
+    const existedOrder = Cart.orders.find((value) => value.id === order.id);
+    if (existedOrder) {
+      existedOrder.count += order.count;
+    } else {
+      Cart.orders.push(order);
+    }
+    this._render();
+  }
 
-      if (id === this.config.id) {
-        event.preventDefault();
-        const price = +event.target.dataset.price;
-        const counter = document.getElementById(event.target.dataset.count);
-        this._add(price, counter ? +counter.innerText : 1);
+  clear() {
+    Cart.orders = [];
+    localStorage.removeItem('orders');
+    this._render();
+  }
+
+  update(id, count) {
+    const order = Cart.orders.find((value) => value.id === id);
+    if (!order) {
+      return;
+    }
+    order.count = count;
+    this._render();
+  }
+
+  remove(id) {
+    Cart.orders = Cart.orders.filter((value) => value.id !== id);
+    this._render();
+  }
+
+  _init() {
+    this._getOrders();
+    this._setUnloadListener();
+  }
+
+  _setUnloadListener() {
+    window.onunload = () => {
+      if (Cart.orders && Cart.orders.length) {
+        localStorage.setItem('orders', JSON.stringify(Cart.orders));
       }
     }
   }
 
-  _add(price, count) {
-    Cart.total += price * count;
-    Cart.products += count;
+  _getOrders() {
+    const orders = JSON.parse(localStorage.getItem('orders'));
+    Cart.orders = orders || [];
     this._render();
   }
 
   _render() {
-    const element = document.getElementById(this.config.id);
-    if (!element) {
+    const element = document.getElementById(this._config.id);
+    if (!Cart.orders || !Cart.orders.length) {
+      element.innerHTML = 'Корзина';
       return;
     }
-    if (!Cart.products) {
-      element.innerHTML = '<span>Корзина</span>';
-      return;
-    }
+    const ordersTotal = Cart.orders.reduce((acc, value) => {
+      acc.total += value.count * value.price;
+      acc.count += value.count;
+      return acc;
+    }, { total: 0, count: 0 });
     element.innerHTML = `
-      <span id='products'>${Cart.products} /&nbsp;</span>
-      <span id='total'>${Cart.total} ₽</span>
+      <span id='products'>${ordersTotal.count} /&nbsp;</span>
+      <span id='total'>${ordersTotal.total} ₽</span>
     `;
   }
 }

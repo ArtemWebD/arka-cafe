@@ -2,11 +2,13 @@
 @import "fonts";
 @import "navbar";
 @import "card";
+@import "counter-block";
 @import "modal";
 @import "feedback";
 @import "image-modal";
 @import "gallery-modal";
 @import "service";
+@import "order";
 @import "header";
 @import "banqueting-hall";
 @import "delivery";
@@ -20,6 +22,7 @@
 @import "banquet-menu";
 @import "events";
 @import "gallery-images";
+@import "cart-block";
 @import "footer";
 
 body {
@@ -197,6 +200,54 @@ input[type=checkbox]:checked + label {
     content: url('../img/basket.svg');
     display: block;
     margin-left: 20px;
+  }
+}
+
+.clear-all {
+  border: none;
+  padding: 0;
+  width: auto;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+
+  &::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background-image: url('../img/clear.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    margin-left: 20px;
+  }
+
+  &:hover {
+    background: inherit;
+    color: inherit;
+    font-weight: inherit;
+    border: none;
+  }
+}
+
+.clear-button {
+  border: none;
+  padding: 0;
+  width: auto;
+  text-align: left;
+  display: block;
+
+  &::after {
+    content: url('../img/clear.svg');
+    display: block;
+  }
+
+  &:hover {
+    background: inherit;
+    color: inherit;
+    font-weight: inherit;
+    border: none;
   }
 }
 

@@ -1,0 +1,83 @@
+<%
+  const headerData = {
+    title: 'Меню доставки',
+    subtitle: `
+      <div class="header__body__subtitle">
+        <span>
+          Доставляем <br>
+          вкусную еду в течение 45 минут
+        </span>
+      </div>
+    `,
+    modificator: 'header_cart',
+    img: 'header_img.png',
+    subnav: `
+      <ul class="navbar__subnav">
+        <li>
+          <a href="#">
+            Супчик дня
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Гарниры
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Горячее
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Салаты
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Десерты и выпечка
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Полуфабрикаты
+          </a>
+        </li>
+      </ul>
+    `,
+  }
+%>
+<%=_.template(require('../views/cart-header.html').default)(headerData)%>
+
+<main>
+  <section class="cart-block">
+    <div class="container">
+      <div class="cart-block__title">
+        <h2>
+          Ваш заказ
+        </h2>
+      </div>
+      <div class="cart-block__clear-all">
+        <a href="#" class="btn clear-all">
+          Очистить всё
+        </a>
+      </div>
+      <div class="cart-block__orders">
+      </div>
+      <div class="cart-block__total">
+        <span class="total-text">
+          Итого:
+        </span>
+        <span class="total-counter">
+        </span>
+      </div>
+      <div class="cart-block__button">
+        <button class="button btn" data-modal="cart-feedback" data-action="open">
+          Оформить заказ
+        </butt>
+      </div>
+    </div>
+  </section>
+</main>
+<%=_.template(require('../views/modal.html').default)({ id: 'cart-feedback' })%>
+<%=_.template(require('../views/footer.html').default)()%>
