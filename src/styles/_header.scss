@@ -10,7 +10,6 @@
     &__time-and-street {
       display: flex;
       align-items: center;
-      border-right: 2px solid $brown;
       height: 100%;
 
       &__street {
@@ -69,6 +68,7 @@
   &__body {
     padding: 85px 70px 79px 70px;
     display: flex;
+    flex-direction: row-reverse;
     position: relative;
 
     &__title {
@@ -88,6 +88,7 @@
     &__image {
       padding-left: 145px;
       position: relative;
+      cursor: pointer;
 
       &__wrapper {
         width: 370px;
@@ -102,37 +103,29 @@
       }
     }
 
-    &__subtitle {
-      margin-top: 22px;
+    &__image:hover + &__title {
+      .header__body__button {
+        .btn {
+          &::after {
+            margin-left: 30px;
+          }
+        }
+      }
     }
 
-    &__separator {
-      position: absolute;
-      height: 100%;
-      top: 0%;
-      left: 37.5%;
-
-      &::after {
-        content: "";
-        display: block;
-        width: 2px;
-        height: 100%;
-        background-color: $brown;
-        position: absolute;
-        bottom: 0;
-        right: 20%;
-      }
+    &__subtitle {
+      margin-top: 22px;
     }
 
     &::after {
       content: "";
       display: block;
       width: 2px;
-      height: 100%;
+      height: calc(100%  + 65px);
       background-color: $brown;
       position: absolute;
       left: 49.74%;
-      top: 0;
+      top: -65px;
     }
   }
 }
@@ -189,6 +182,9 @@
 
 .header_cart {
   .header__info {
+    .info__time-and-street {
+      border-right: 2px solid $brown;
+    }
     
     &::after {
       display: none;

@@ -13,7 +13,7 @@ const modalHtml = `
       <input type='text' name='name' placeholder='Имя'>
       <input type='tel' name='phone' placeholder='Телефон'>
       <button type='submit' class='btn'>Оставить заявку</button>
-      <input type='checkbox' name='agreement' id='agreement'>
+      <input type='checkbox' name='agreement' id='agreement' checked='true'>
       <label for='agreement'>Согласие на обработку персональных данных</label>
     </form>
   </div>
@@ -37,6 +37,7 @@ export class CartFeedback extends FeedbackForm {
         });
 
         this._setFormListener(modal);
+        super._setCheckboxListener(modal);
       },
     });
   }

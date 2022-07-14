@@ -12,6 +12,7 @@ export class ImageModals {
 
   _initModals() {
     const elements = this._getElements();
+
     elements.forEach((element) => {
       const image = element.querySelector('img');
       const html = `
@@ -19,6 +20,7 @@ export class ImageModals {
           <img src='${image?.src}' alt='${image?.alt}'>
         </div>
       `;
+      
       new CardModal(element, {
         id: this._id,
         body: element,

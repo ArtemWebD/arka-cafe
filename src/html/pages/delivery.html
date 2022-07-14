@@ -14,32 +14,32 @@
     subnav: `
       <ul class="navbar__subnav">
         <li>
-          <a href="#">
+          <a href="delivery.html?category=Супчик%20дня">
             Супчик дня
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="delivery.html?category=Гарниры">
             Гарниры
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="delivery.html?category=Горячее">
             Горячее
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="delivery.html?category=Салаты">
             Салаты
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="delivery.html?category=Десерты%20и%20выпечка">
             Десерты и выпечка
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="delivery.html?category=Полуфабрикаты">
             Полуфабрикаты
           </a>
         </li>
@@ -49,11 +49,10 @@
 %>
 <%=_.template(require('../views/header.html').default)(headerData)%>
 <main>
-  <section class="dishes">
+  <section class="dishes" id="trigger-scroll" data-visible="0.2">
     <div class="container">
       <div class="dishes__title">
-        <h2>
-          Супчик дня
+        <h2 id="category">
         </h2>
       </div>
       <div class="dishes__body">
@@ -140,6 +139,8 @@
     </div>
   </section>
 </main>
+
+<%=_.template(require('../views/scroll-button.html').default)()%>
 <%=_.template(require('../views/modal.html').default)({ id: 'feedback' })%>
 <%=_.template(require('../views/modal.html').default)({ id: 'dishes-modal' })%>
 <%=_.template(require('../views/footer.html').default)()%>

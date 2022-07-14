@@ -11,6 +11,7 @@
     border-radius: 0;
     padding: 80px 143px 98px 142px;
     position: relative;
+    overflow: visible;
 
     &__form {
       margin-top: 75px;
@@ -23,6 +24,10 @@
 
       button {
         width: 285px;
+      }
+
+      button.visibility-hidden {
+        visibility: hidden;
       }
 
       label {

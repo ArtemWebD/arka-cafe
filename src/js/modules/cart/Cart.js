@@ -75,7 +75,15 @@ export class Cart {
     }, { total: 0, count: 0 });
     element.innerHTML = `
       <span id='products'>${ordersTotal.count} /&nbsp;</span>
-      <span id='total'>${ordersTotal.total} ₽</span>
+      <span id='total'>${new Intl.NumberFormat('ru').format(ordersTotal.total)} ₽</span>
     `;
+    Cart.orders.forEach((order) => this._renderOrderCount(order));
+  }
+
+  _renderOrderCount(order) {
+    const element = document.querySelector(`div[data-id="${order.id}"] .dish-count`);
+    if (element) {
+      element.innerText = `+ ${order.count}`;
+    }
   }
 }

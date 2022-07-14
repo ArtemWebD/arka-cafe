@@ -14,32 +14,32 @@
     subnav: `
       <ul class="navbar__subnav">
         <li>
-          <a href="#">
+          <a href="delivery.html?category=Супчик%20дня">
             Супчик дня
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="delivery.html?category=Гарниры">
             Гарниры
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="delivery.html?category=Горячее">
             Горячее
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="delivery.html?category=Салаты">
             Салаты
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="delivery.html?category=Десерты%20и%20выпечка">
             Десерты и выпечка
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="delivery.html?category=Полуфабрикаты">
             Полуфабрикаты
           </a>
         </li>
@@ -50,7 +50,7 @@
 <%=_.template(require('../views/cart-header.html').default)(headerData)%>
 
 <main>
-  <section class="cart-block">
+  <section class="cart-block" id="trigger-scroll">
     <div class="container">
       <div class="cart-block__title">
         <h2>
@@ -79,5 +79,7 @@
     </div>
   </section>
 </main>
+
+<%=_.template(require('../views/scroll-button.html').default)()%>
 <%=_.template(require('../views/modal.html').default)({ id: 'cart-feedback' })%>
 <%=_.template(require('../views/footer.html').default)()%>

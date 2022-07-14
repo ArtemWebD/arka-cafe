@@ -19,15 +19,15 @@
       justify-content: stretch;
 
       img {
-        padding: 0 15px;
+        margin: 0 15px;
         max-width: 500px;
 
         &:first-child {
-          padding-left: 0;
+          margin-left: 0;
         }
 
         &:last-child {
-          padding-right: 0;
+          margin-right: 0;
         }
       }
     }
@@ -35,6 +35,11 @@
     &__button {
       margin-top: 50px;
       text-align: center;
+
+      .btn {
+        width: 248px;
+        padding: 8px 0;
+      }
     }
   }
 }

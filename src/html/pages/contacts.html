@@ -33,7 +33,7 @@
 <%=_.template(require('../views/header.html').default)(headerData)%>
 
 <main>
-  <section class="events events_contacts">
+  <section class="events events_contacts" id="trigger-scroll">
     <div class="container">
       <div class="events__body">
         <%
@@ -116,5 +116,6 @@
   </section>
 </main>
 
+<%=_.template(require('../views/scroll-button.html').default)()%>
 <%=_.template(require('../views/modal.html').default)({ id: 'feedback' })%>
 <%=_.template(require('../views/footer.html').default)()%>

@@ -34,6 +34,11 @@
         </div>
       </div>
       <div class="header__body">
+        <div class='header__body__image' data-modal="feedback" data-action="open">
+          <div class="header__body__image__wrapper rounded" data-modal="feedback" data-action="open">
+            <img src="img/<%=img%>" alt="Арка кафе" data-modal="feedback" data-action="open">
+          </div>
+        </div>
         <div class='header__body__title'>
           <div class="header__logo">
             <img src="img/logo.png" alt="Logo">
@@ -43,11 +48,6 @@
           </h1>
           <%=subtitle%>
         </div>
-        <div class='header__body__image'>
-          <div class="header__body__image__wrapper rounded">
-            <img src="img/<%=img%>" alt="Арка кафе">
-          </div>
-        </div>
       </div>
       <nav class="header__navigation navbar">
         <ul class="navbar__main">
@@ -55,27 +55,27 @@
             <a href="index.html">
               Главная
             </a>
-        </li>
+          </li>
           <li>
             <a href="banqueting.html">
               Заказать банкет
             </a>
-        </li>
+          </li>
           <li>
-            <a href="delivery.html">
+            <a href="delivery.html?category=Супчик%20дня">
               Меню доставки
             </a>
-        </li>
+          </li>
           <li>
             <a href="gallery.html">
               Галерея
             </a>
-        </li>
+          </li>
           <li>
             <a href="contacts.html">
               Контакты
             </a>
-        </li>
+          </li>
         </ul>
         <%=subnav ? subnav : ""%>
       </nav>

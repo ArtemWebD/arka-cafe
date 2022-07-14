@@ -2,9 +2,11 @@ import "../styles/global.scss";
 import { CartPage } from "./cart-page";
 import { DeliveryPage } from "./delivery";
 import { CartFeedback } from "./modules/cart-feedback";
+import { Category } from "./modules/category/Category";
 import { FeedbackForm } from "./modules/feedback-form";
 import { ImageModals } from "./modules/image-modal";
 import { initSliders } from "./modules/initSliders";
+import { ScrollButton } from "./modules/scroll-top/ScrollButton";
 
 window.onload = () => {
   initSliders();
@@ -16,6 +18,11 @@ window.onload = () => {
 
   new FeedbackForm();
   new CartFeedback();
+  new Category();
+  new ScrollButton({
+    triggerElement: '#trigger-scroll',
+    button: '.scroll-button',
+  });
 
   deliveryPage.init();
   imageModals.init();

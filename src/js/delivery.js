@@ -41,7 +41,6 @@ export class DeliveryPage {
     const image = item.querySelector('.dishes__item__image img');
     const title = item.querySelector('.dishes__item__title h3');
     const price = item.querySelector('.dishes__item__price span');
-    const priceNumber = +price.innerText.replace('₽', '').replace(' ', '');
     return `
       <div class='modal__body dishes-modal__body'>
         <div class='modal__body__image dishes-modal__body__image rounded'>
@@ -60,7 +59,7 @@ export class DeliveryPage {
           <span>${price.innerText}</span>
         </div>
         <div class='modal__body__button dishes-modal__body__button'>
-          <a href='#' class='basket-button' data-cart='cart' data-price='${priceNumber}' data-count='counter' data-modal='dishes-modal' data-action='close'>Добавить в корзину</a>
+          <a href='#' class='basket-button'>Добавить в корзину</a>
         </div>
         <div class='modal__body__count dishes-modal__body__count counter-block' id='counter'>
           <span class='minus' data-action='minus'></span>
@@ -73,10 +72,12 @@ export class DeliveryPage {
 
   _setCardListener(item, selector, id) {
     const button = item.querySelector('.basket-button');
+
     button.onclick = (event) => {
       event.preventDefault();
+      
       this.cart.add({
-        title: item.querySelector(`${selector}__title`).textContent,
+        title: item.querySelector(`${selector}__title h3`).innerHTML,
         image: item.querySelector(`${selector}__image img`).src,
         price: +item.querySelector(`${selector}__price`)
           .textContent

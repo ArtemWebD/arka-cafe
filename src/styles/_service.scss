@@ -1,6 +1,7 @@
 .service {
   &__body {
     display: flex;
+    flex-direction: row-reverse;
     align-items: flex-start;
     padding: 0 70px;
 
@@ -23,6 +24,16 @@
         width: 500px;
       }
     }
+
+    &__image:hover + &__text {
+      .service__body__text__link {
+        .btn {
+          &::after {
+            margin-left: 30px;
+          }
+        }
+      }
+    }
   }
 
   .container {
@@ -38,6 +49,8 @@
 
 .service.service_inversion {
   .service__body {
+    flex-direction: row;
+
     &__text {
       padding-left: 60px;
       padding-right: 0;

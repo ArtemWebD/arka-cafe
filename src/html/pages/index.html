@@ -15,9 +15,12 @@
 %>
 <%=_.template(require('../views/header.html').default)(headerData)%>
 <main>
-  <section class="banqueting-hall service">
+  <section class="banqueting-hall service" id="trigger-scroll">
     <div class="container">
       <div class="service__body">
+        <a href="banqueting.html" class="service__body__image">
+          <img src="img/banqueting_hall.png" alt="Банкетный зал" class="animated-img">
+        </a>
         <div class="service__body__text">
           <h2>
             Банкетный зал
@@ -27,13 +30,10 @@
             с оригинальным оформлением зала
           </div>
           <div class="service__body__text__link">
-            <a href="#" class="btn arrow-btn" data-modal="feedback" data-action="open">
+            <a href="banqueting.html" class="btn arrow-btn">
               Подробнее
             </a>
           </div>
-        </div>
-        <div class="service__body__image">
-          <img src="img/banqueting_hall.png" alt="Банкетный зал" class="animated-img">
         </div>
       </div>
     </div>
@@ -41,9 +41,9 @@
   <section class="delivery service service_inversion">
     <div class="container">
       <div class="service__body">
-        <div class="service__body__image">
+        <a href="delivery.html" class="service__body__image">
           <img src="img/delivery.png" alt="Доставка на дом" class="animated-img">
-        </div>
+        </a>
         <div class="service__body__text">
           <h2>
             Заказать доставку на дом
@@ -52,7 +52,7 @@
             Все очень вкусно приготовлено и изящно оформлено на специальной посуде нашими профессиональными поварами
           </div>
           <div class="service__body__text__link">
-            <a href="#" class="btn arrow-btn" data-modal="feedback" data-action="open">
+            <a href="delivery.html" class="btn arrow-btn">
               Подробнее
             </a>
           </div>
@@ -77,9 +77,9 @@
           <img src="img/galery_1.png" alt="Галерея" class="animated-img">
         </div>
         <div class="gallery__body__button">
-          <button class="btn" data-modal="feedback" data-action="open">
+          <a href="gallery.html" class="btn">
             Подробнее
-          </button>
+          </a>
         </div>
       </div>
     </div>
@@ -123,4 +123,5 @@
   </section>
 </main>
 <%=_.template(require('../views/modal.html').default)({ id: 'feedback' })%>
+<%=_.template(require('../views/scroll-button.html').default)()%>
 <%=_.template(require('../views/footer.html').default)()%>

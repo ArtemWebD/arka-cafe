@@ -10,7 +10,7 @@
 <%=_.template(require('../views/header.html').default)(headerData)%>
 
 <main>
-  <section class="gallery-images">
+  <section class="gallery-images" id="trigger-scroll" data-visible="0.2">
     <div class="container">
       <div class="gallery-images__body">
         <% for (let i = 1; i <= 20; i++) {%>
@@ -112,6 +112,7 @@
   </section>
 </main>
 
+<%=_.template(require('../views/scroll-button.html').default)()%>
 <%=_.template(require('../views/modal.html').default)({ id: 'image-modal' })%>
 <%=_.template(require('../views/modal.html').default)({ id: 'gallery-modal' })%>
 <%=_.template(require('../views/modal.html').default)({ id: 'feedback' })%>

@@ -77,6 +77,11 @@
 
     &__basket-button {
       margin-top: 10px;
+      display: flex;
+
+      .dish-count {
+        margin-left: 20px;
+      }
     }
 
     &:nth-child(3n+1) {

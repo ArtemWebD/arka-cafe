@@ -16,9 +16,12 @@
 <%=_.template(require('../views/header.html').default)(headerData)%>
 
 <main>
-  <section class="hall-description service">
+  <section class="hall-description service" id="trigger-scroll">
     <div class="container">
       <div class="service__body">
+        <div class="service__body__image">
+          <img src="img/hall_description.png" alt="Описание зала" class="animated-img">
+        </div>
         <div class="service__body__text">
           <div class="service__body__text__title">
             <h2>
@@ -35,9 +38,6 @@
               Все очень вкусно приготовлено и изящно оформлено на специальной посуде нашими профессиональными поварами все очень вкусно приготовлено и изящно оформлено на специальной посуде нашими профессиональными  приготовлено и изящно
             </span>
           </div>
-        </div>
-        <div class="service__body__image">
-          <img src="img/hall_description.png" alt="Описание зала" class="animated-img">
         </div>
       </div>
     </div>
@@ -163,6 +163,7 @@
   </section>
 </main>
 
+<%=_.template(require('../views/scroll-button.html').default)()%>
 <%=_.template(require('../views/modal.html').default)({ id: 'feedback' })%>
 <%=_.template(require('../views/modal.html').default)({ id: 'image-modal' })%>
   

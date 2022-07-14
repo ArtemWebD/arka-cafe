@@ -12,7 +12,7 @@ const modalHtml = `
       <input type='text' name='name' placeholder='Имя'>
       <input type='tel' name='phone' placeholder='Телефон'>
       <button type='submit' class='btn'>Оставить заявку</button>
-      <input type='checkbox' name='agreement' id='agreement'>
+      <input type='checkbox' name='agreement' id='agreement' checked='true'>
       <label for='agreement'>Согласие на обработку персональных данных</label>
     </form>
   </div>
@@ -36,6 +36,7 @@ export class FeedbackForm {
         });
 
         this._setFormListener(modal);
+        this._setCheckboxListener(modal);
       },
     });
   }
@@ -54,6 +55,8 @@ export class FeedbackForm {
       if (!this._validate(data)) {
         return;
       }
+
+      // Business logic should be executed here after validation
 
       this._insertFinalBlock();
     };
@@ -89,5 +92,14 @@ export class FeedbackForm {
       </div>
     `;
     this.modal.setListeners();
+  }
+
+  _setCheckboxListener(modal) {
+    const checkbox = modal.querySelector('input[type=checkbox]');
+    const button = modal.querySelector('form button[type="submit"]');
+
+    checkbox.onchange = () => {
+      button.classList.toggle('visibility-hidden');
+    }
   }
 }

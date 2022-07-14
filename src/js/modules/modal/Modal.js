@@ -1,3 +1,13 @@
+/**
+ * Class takes a config object as a property
+ * The config contains the following settings:
+ * id: html id of modal,
+ * openAnimationDuration: the duration of the animation of the appearance of the modal window,
+ * closeAnimationDuration: modal hide animation duration,
+ * overlayScroll: if true, then scrolling the document will cause a scroll inside the modal,
+ * openCallback: callback called after the modal is created,
+ * html: a string to put as html before the window is created
+ */
 export class Modal {
   constructor(config) {
     this.config = config;
@@ -86,9 +96,10 @@ export class Modal {
     if (!blur) {
       return;
     }
+    const body = this.modal.querySelector('.modal__body');
     blur.addEventListener('mousewheel', (event) => {
       event.preventDefault();
-      this.modal.scrollTop += event.deltaY;
+      body.scrollTop += event.deltaY;
     });
   }
 

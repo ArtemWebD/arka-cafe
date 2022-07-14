@@ -9,6 +9,7 @@
 @import "gallery-modal";
 @import "service";
 @import "order";
+@import "scroll-button";
 @import "header";
 @import "banqueting-hall";
 @import "delivery";
@@ -134,7 +135,7 @@ input[type=checkbox] + label {
   }
 }
 
-input[type=checkbox]:checked + label {
+input[type=checkbox]:checked ~ label {
   &::before {
     background-image: url('../img/check-mark.svg');
   }
@@ -159,6 +160,7 @@ input[type=checkbox]:checked + label {
 }
 
 .btn {
+  display: inline-block;
   outline: none;
   background: transparent;
   font-size: 16px;
@@ -212,6 +214,13 @@ input[type=checkbox]:checked + label {
     content: url('../img/basket.svg');
     display: block;
     margin-left: 20px;
+    transition: .15s linear;
+  }
+
+  &:active {
+    &::after {
+      margin-left: 30px;
+    }
   }
 }
 
