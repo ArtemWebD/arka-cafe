@@ -32,6 +32,8 @@ export class DeliveryPage {
             id: 'counter',
             min: 1
           });
+          const order = this.cart.getById(+item.dataset?.id);
+          this.cart.renderOrderCount(order);
         },
       });
     });
@@ -42,7 +44,7 @@ export class DeliveryPage {
     const title = item.querySelector('.dishes__item__title h3');
     const price = item.querySelector('.dishes__item__price span');
     return `
-      <div class='modal__body dishes-modal__body'>
+      <div class='modal__body dishes-modal__body' data-id='${item.dataset?.id}'>
         <div class='modal__body__image dishes-modal__body__image rounded'>
           <img src='${image.src}' alt='${image.alt || ''}'>
         </div>
@@ -59,7 +61,10 @@ export class DeliveryPage {
           <span>${price.innerText}</span>
         </div>
         <div class='modal__body__button dishes-modal__body__button'>
-          <a href='#' class='basket-button'>Добавить в корзину</a>
+          <a href='#' class='basket-button'>
+            Добавить в корзину
+          </a>
+          <a href='cart.html' class='dish-count'></a>
         </div>
         <div class='modal__body__count dishes-modal__body__count counter-block' id='counter'>
           <span class='minus' data-action='minus'></span>

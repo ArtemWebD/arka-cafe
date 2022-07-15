@@ -43,6 +43,17 @@ export class Cart {
     this._render();
   }
 
+  getById(id) {
+    return Cart.orders.find((value) => value.id === id);
+  }
+
+  renderOrderCount(order) {
+    const elements = document.querySelectorAll(`div[data-id="${order.id}"] .dish-count`);
+    elements.forEach((element) => {
+      element.innerText = `+ ${order.count}`
+    });
+  }
+
   _init() {
     this._getOrders();
     this._setUnloadListener();
@@ -77,13 +88,6 @@ export class Cart {
       <span id='products'>${ordersTotal.count} /&nbsp;</span>
       <span id='total'>${new Intl.NumberFormat('ru').format(ordersTotal.total)} ₽</span>
     `;
-    Cart.orders.forEach((order) => this._renderOrderCount(order));
-  }
-
-  _renderOrderCount(order) {
-    const element = document.querySelector(`div[data-id="${order.id}"] .dish-count`);
-    if (element) {
-      element.innerText = `+ ${order.count}`;
-    }
+    Cart.orders.forEach((order) => this.renderOrderCount(order));
   }
 }

@@ -18,7 +18,7 @@
       align-items: stretch;
       justify-content: stretch;
 
-      img {
+      a {
         margin: 0 15px;
         max-width: 500px;
 
@@ -28,6 +28,10 @@
 
         &:last-child {
           margin-right: 0;
+        }
+
+        img {
+          max-height: 100%;
         }
       }
     }
