@@ -7,6 +7,10 @@
     white-space: nowrap;
     position: relative;
 
+    &__mobile-logo {
+      display: none;
+    }
+
     &__time-and-street {
       display: flex;
       align-items: center;
@@ -54,6 +58,10 @@
       padding-left: 70px;
     }
 
+    &__burger {
+      display: none;
+    }
+
     &::after {
       content: "";
       width: 100%;
@@ -62,6 +70,44 @@
       position: absolute;
       left: 0;
       bottom: 0;
+    }
+
+    @media (max-width: $breakpoint-1) {
+      height: 60px;
+      padding: 0 10px;
+
+      &__mobile-logo {
+        display: block;
+        width: 55%;
+
+        img {
+          width: 63px;
+          max-height: 100%;
+        }
+      }
+
+      &__time-and-street, &__phone {
+        display: none;
+      }
+
+      &__cart {
+        width: 34%;
+        border-right: none;
+
+        &__btn {
+          display: inline-block;
+          width: 100%;
+          text-align: center;
+
+          span {
+            display: none;
+          }
+        }
+      }
+
+      &__burger {
+        display: flex;
+      }
     }
   }
 

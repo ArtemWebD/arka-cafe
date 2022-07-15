@@ -1,6 +1,8 @@
 @import "colors";
 @import "fonts";
+@import "breakpoints";
 @import "navbar";
+@import "burger";
 @import "card";
 @import "counter-block";
 @import "modal";
@@ -145,6 +147,11 @@ input[type=checkbox]:checked ~ label {
   width: 1210px;
   margin: 0 auto;
   padding: 0 20px;
+
+  @media (max-width: $breakpoint-1) {
+    width: 100%;
+    padding: 0 15px;
+  }
 }
 
 .rounded {

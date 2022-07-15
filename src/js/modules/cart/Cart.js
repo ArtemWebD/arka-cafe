@@ -65,7 +65,7 @@ export class Cart {
   _render() {
     const element = document.getElementById(this._config.id);
     if (!Cart.orders || !Cart.orders.length) {
-      element.innerHTML = 'Корзина';
+      element.innerHTML = '<span class="default-text">Корзина</span>';
       return;
     }
     const ordersTotal = Cart.orders.reduce((acc, value) => {
