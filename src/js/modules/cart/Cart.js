@@ -39,6 +39,7 @@ export class Cart {
       return;
     }
     order.count = count;
+    console.log(order);
     this._render();
   }
 
@@ -83,19 +84,21 @@ export class Cart {
 
   _render() {
     const element = document.getElementById(this._config.id);
-    if (!Cart.orders || !Cart.orders.length) {
-      element.innerHTML = 'Корзина';
-      return;
-    }
     const ordersTotal = Cart.orders.reduce((acc, value) => {
       acc.total += value.count * value.price;
       acc.count += value.count;
       return acc;
     }, { total: 0, count: 0 });
-    element.innerHTML = `
-      <span id='products'>${ordersTotal.count} /&nbsp;</span>
-      <span id='total'>${new Intl.NumberFormat('ru').format(ordersTotal.total)} ₽</span>
-    `;
+
+    if (!ordersTotal.count) {
+      element.innerHTML = 'Корзина';
+    } else {
+      element.innerHTML = `
+        <span id='products'>${ordersTotal.count} /&nbsp;</span>
+        <span id='total'>${new Intl.NumberFormat('ru').format(ordersTotal.total)} ₽</span>
+      `;
+    }
+
     Cart.orders.forEach((order) => this.renderOrderCount(order));
   }
 }
