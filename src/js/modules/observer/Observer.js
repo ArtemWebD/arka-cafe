@@ -1,7 +1,6 @@
 export class Observer {
-  constructor(observer) {
+  constructor() {
     this._subscribers = [];
-    this._observer = observer;
   }
 
   subscribe(subscriber) {
