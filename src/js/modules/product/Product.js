@@ -19,7 +19,6 @@ export class Product {
         .replace('₽', '')
         .replaceAll(' ', ''),
       count: 1,
-      id: this._id,
     }
 
     this._init();
@@ -47,7 +46,7 @@ export class Product {
     }
     button.onclick = (event) => {
       event.preventDefault();
-      this._cart.add(this._order);
+      this._cart.add(this._order, this._id);
     }
   }
 }

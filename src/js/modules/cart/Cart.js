@@ -35,13 +35,12 @@ export class Cart {
     } 
   }
 
-  add(order) {
-    const existedOrder = Cart._orders[order.id];
+  add(order, id) {
+    const existedOrder = Cart._orders[id];
     if (existedOrder) {
       existedOrder.count += 1;
     } else {
-      Cart._orders[order.id] = order;
-      delete order.id;
+      Cart._orders[id] = order;
     }
     Cart._observer.observe(Cart._orders);
     this._render();
