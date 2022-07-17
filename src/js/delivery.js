@@ -1,6 +1,7 @@
 import { Cart } from "./modules/cart/Cart";
 import { Counter } from "./modules/counter/Counter";
 import { CardModal } from "./modules/modal/CardModal";
+import { Product } from "./modules/product/Product";
 
 export class DeliveryPage {
   constructor() {
@@ -9,9 +10,10 @@ export class DeliveryPage {
   }
 
   init() {
-    this._setModal();
+    // this._setModal();
     this.items.forEach((item) => {
-      this._setCartButtonListener(item, '.dishes__item', +item.dataset.id);
+      new Product(item);
+      // this._setCartButtonListener(item, '.dishes__item', +item.dataset.id);
     });
   }
 

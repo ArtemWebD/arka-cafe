@@ -28,7 +28,11 @@ export class Cart {
   _init() {
     this._getOrders();
     this._setUnloadListener();
-    Cart._observer.subscribe(...this._config.renderSubscribers);
+    if (this._config.renderSubscribers) {
+      this._config.renderSubscribers.forEach((subscriber) => {
+        Cart._observer.subscribe(subscriber);
+      });
+    } 
   }
 
   add(order) {
@@ -69,14 +73,14 @@ export class Cart {
 
   _setUnloadListener() {
     window.onunload = () => {
-      localStorage.setItem('orders', JSON.stringify(Cart.orders));
+      localStorage.setItem('orders', JSON.stringify(Cart._orders));
     }
   }
 
   _getOrders() {
-    const orders = JSON.parse(localStorage.getItem('orders'));
-    Cart._orders = orders || {};
-    this._observer.observe(Cart._orders);
+    const orders = localStorage.getItem('orders');
+    Cart._orders = orders === 'undefined' ? {} : JSON.parse(orders) ;
+    Cart._observer.observe(Cart._orders);
     this._render();
   }
 
