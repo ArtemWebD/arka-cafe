@@ -11,7 +11,7 @@ export class DeliveryPage {
   init() {
     this._setModal();
     this.items.forEach((item) => {
-      this._setCardListener(item, '.dishes__item', +item.dataset.id);
+      this._setCartButtonListener(item, '.dishes__item', +item.dataset.id);
     });
   }
 
@@ -28,10 +28,6 @@ export class DeliveryPage {
         overlayScroll: true,
         openCallback: (modal) => {
           this._setCardListener(modal, '.dishes-modal__body', +item.dataset.id);
-          new Counter({
-            id: 'counter',
-            min: 1
-          });
           const order = this.cart.getById(+item.dataset?.id);
           this.cart.renderOrderCount(order);
         },
@@ -43,6 +39,7 @@ export class DeliveryPage {
     const image = item.querySelector('.dishes__item__image img');
     const title = item.querySelector('.dishes__item__title h3');
     const price = item.querySelector('.dishes__item__price span');
+    const order = this.cart.getById(+item.dataset?.id);
     return `
       <div class='modal__body dishes-modal__body' data-id='${item.dataset?.id}'>
         <div class='modal__body__image dishes-modal__body__image rounded'>
@@ -64,11 +61,10 @@ export class DeliveryPage {
           <a href='#' class='basket-button'>
             Добавить в корзину
           </a>
-          <a href='cart.html' class='dish-count'></a>
         </div>
         <div class='modal__body__count dishes-modal__body__count counter-block' id='counter'>
           <span class='minus' data-action='minus'></span>
-          <span class='counter'>1</span>
+          <span class='counter dish-count' data-prefix='none'>${order?.count || 0}</span>
           <span class='plus' data-action='plus'></span>
         </div>
       </div>
@@ -76,9 +72,42 @@ export class DeliveryPage {
   }
 
   _setCardListener(item, selector, id) {
-    const button = item.querySelector('.basket-button');
+    const triggers = [
+      item.querySelector('.basket-button'),
+      item.querySelector('.plus'),
+    ];
+    const minusButton = item.querySelector('.minus');
+    const counter = item.querySelector('.counter');
 
-    button.onclick = (event) => {
+    triggers.forEach((trigger) => {
+      trigger.onclick = (event) => {
+        event.preventDefault();
+        
+        this.cart.add({
+          title: item.querySelector(`${selector}__title h3`).innerHTML,
+          image: item.querySelector(`${selector}__image img`).src,
+          price: +item.querySelector(`${selector}__price`)
+            .textContent
+            .replace('₽', '')
+            .replaceAll(' ', ''),
+          count: 1,
+          id,
+        });
+      }
+    });
+
+    minusButton.onclick = () => {
+      const count = +counter.innerText.replace('+ ', '');
+      if (count !== 0) {
+        this.cart.update(id, count - 1);
+      }
+    }
+  }
+
+  _setCartButtonListener(item, selector, id) {
+    const trigger = item.querySelector('.basket-button');
+
+    trigger.onclick = (event) => {
       event.preventDefault();
       
       this.cart.add({

@@ -13,6 +13,10 @@ export class Cart {
     }, 0);
   }
 
+  get orders() {
+    return Cart.orders.filter((value) => value.count > 0);
+  }
+
   add(order) {
     const existedOrder = Cart.orders.find((value) => value.id === order.id);
     if (existedOrder) {
@@ -50,7 +54,10 @@ export class Cart {
   renderOrderCount(order) {
     const elements = document.querySelectorAll(`div[data-id="${order.id}"] .dish-count`);
     elements.forEach((element) => {
-      element.innerText = `+ ${order.count}`
+      if (order.count > 0) {
+        const prefix = element.dataset?.prefix
+        element.innerText = (prefix !== 'none' ? '+ ' : '') + order.count;
+      }
     });
   }
 

@@ -24,9 +24,12 @@ export class CartPage {
   _render() {
     const body = this.element.querySelector('.cart-block__orders');
     const total = this.element.querySelector('.cart-block__total .total-counter');
+    const orders = this.cart.orders;
+
     total.innerText = new Intl.NumberFormat('ru-RU').format(this.cart.total) + ' ₽';
     body.innerHTML = '';
-    Cart.orders.forEach((order) => {
+
+    orders.forEach((order) => {
       const html = this._getHtml(order);
       body.insertAdjacentHTML('beforeend', html);
       new Counter({

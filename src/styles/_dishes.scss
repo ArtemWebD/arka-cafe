@@ -143,6 +143,10 @@
 
     &__count {
       margin-top: 25px;
+
+      .counter {
+        margin: 0;
+      }
     }
   }
 }
