@@ -64,7 +64,7 @@ export class DeliveryPage {
         </div>
         <div class='modal__body__count dishes-modal__body__count counter-block' id='counter'>
           <span class='minus' data-action='minus'></span>
-          <span class='counter dish-count' data-prefix='none'>${order?.count || 0}</span>
+          <span class='counter dish-count cart-counter'>${order?.count || 0}</span>
           <span class='plus' data-action='plus'></span>
         </div>
       </div>

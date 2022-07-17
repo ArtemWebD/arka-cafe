@@ -54,9 +54,10 @@ export class Cart {
   renderOrderCount(order) {
     const elements = document.querySelectorAll(`div[data-id="${order.id}"] .dish-count`);
     elements.forEach((element) => {
-      if (order.count > 0) {
-        const prefix = element.dataset?.prefix
-        element.innerText = (prefix !== 'none' ? '+ ' : '') + order.count;
+      if (element.classList.contains('cart-counter')) {
+        element.innerText = order.count;
+      } else {
+        element.innerText = order.count > 0 ? '+ ' + order.count : '';
       }
     });
   }
