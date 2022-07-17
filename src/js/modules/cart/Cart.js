@@ -70,9 +70,7 @@ export class Cart {
 
   _setUnloadListener() {
     window.onunload = () => {
-      if (Cart.orders && Cart.orders.length) {
-        localStorage.setItem('orders', JSON.stringify(Cart.orders));
-      }
+      localStorage.setItem('orders', JSON.stringify(Cart.orders));
     }
   }
 
