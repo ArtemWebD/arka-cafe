@@ -38,7 +38,7 @@ export class Cart {
   add(order) {
     const existedOrder = Cart._orders[order.id];
     if (existedOrder) {
-      existedOrder.count += +order.count;
+      existedOrder.count += 1;
     } else {
       Cart._orders[order.id] = order;
       delete order.id;
