@@ -1,10 +1,13 @@
+import { Observer } from "../observer/Observer";
+
 /**
  * Объект конфиг принимает в себя следующие свойства:
  * @param id id элемента корзины
  * @param renderSubscribers массив коллбэков, вызываемых при изменении корзины
  */
 export class Cart {
-  static orders = [];
+  static _orders = [];
+  static _observer = new Observer();
 
   constructor(config) {
     this._config = config;
@@ -12,65 +15,56 @@ export class Cart {
   }
 
   get total() {
-    return Cart.orders.reduce((acc, value) => {
+    return Object.values(Cart._orders).reduce((acc, value) => {
       acc += value.count * value.price;
       return acc;
     }, 0);
   }
 
   get orders() {
-    return Cart.orders.filter((value) => value.count > 0);
-  }
-
-  add(order) {
-    const existedOrder = Cart.orders.find((value) => value.id === order.id);
-    if (existedOrder) {
-      existedOrder.count += order.count;
-    } else {
-      Cart.orders.push(order);
-    }
-    this._render();
-  }
-
-  clear() {
-    Cart.orders = [];
-    localStorage.removeItem('orders');
-    this._render();
-  }
-
-  update(id, count) {
-    const order = Cart.orders.find((value) => value.id === id);
-    if (!order) {
-      return;
-    }
-    order.count = count;
-    console.log(order);
-    this._render();
-  }
-
-  remove(id) {
-    Cart.orders = Cart.orders.filter((value) => value.id !== id);
-    this._render();
-  }
-
-  getById(id) {
-    return Cart.orders.find((value) => value.id === id);
-  }
-
-  renderOrderCount(order) {
-    const elements = document.querySelectorAll(`div[data-id="${order.id}"] .dish-count`);
-    elements.forEach((element) => {
-      if (element.classList.contains('cart-counter')) {
-        element.innerText = order.count;
-      } else {
-        element.innerText = order.count > 0 ? '+ ' + order.count : '';
-      }
-    });
+    return Object.values(Cart._orders).filter((value) => value.count > 0);
   }
 
   _init() {
     this._getOrders();
     this._setUnloadListener();
+    Cart._observer.subscribe(...this._config.renderSubscribers);
+  }
+
+  add(order) {
+    const existedOrder = Cart._orders[order.id];
+    if (existedOrder) {
+      existedOrder.count += +order.count;
+    } else {
+      Cart._orders[order.id] = order;
+      delete order.id;
+    }
+    Cart._observer.observe(Cart._orders);
+    this._render();
+  }
+
+  clear() {
+    Cart._orders = {};
+    localStorage.removeItem('orders');
+    Cart._observer.observe(Cart._orders);
+    this._render();
+  }
+
+  update(id, count) {
+    const order = Cart._orders[id];
+    order.count = count;
+    Cart._observer.observe(Cart._orders);
+    this._render();
+  }
+
+  remove(id) {
+    delete Cart._orders[id];
+    Cart._observer.observe(Cart._orders);
+    this._render();
+  }
+
+  getById(id) {
+    return Cart._orders[id];
   }
 
   _setUnloadListener() {
@@ -81,13 +75,14 @@ export class Cart {
 
   _getOrders() {
     const orders = JSON.parse(localStorage.getItem('orders'));
-    Cart.orders = orders || [];
+    Cart._orders = orders || {};
+    this._observer.observe(Cart._orders);
     this._render();
   }
 
   _render() {
     const element = document.getElementById(this._config.id);
-    const ordersTotal = Cart.orders.reduce((acc, value) => {
+    const ordersTotal = Object.values(Cart._orders).reduce((acc, value) => {
       acc.total += value.count * value.price;
       acc.count += value.count;
       return acc;
@@ -95,13 +90,12 @@ export class Cart {
 
     if (!ordersTotal.count) {
       element.innerHTML = 'Корзина';
-    } else {
-      element.innerHTML = `
-        <span id='products'>${ordersTotal.count} /&nbsp;</span>
-        <span id='total'>${new Intl.NumberFormat('ru').format(ordersTotal.total)} ₽</span>
-      `;
+      return;
     }
 
-    Cart.orders.forEach((order) => this.renderOrderCount(order));
+    element.innerHTML = `
+      <span id='products'>${ordersTotal.count} /&nbsp;</span>
+      <span id='total'>${new Intl.NumberFormat('ru').format(ordersTotal.total)} ₽</span>
+    `;
   }
 }
