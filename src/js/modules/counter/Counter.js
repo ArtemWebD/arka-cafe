@@ -1,7 +1,7 @@
 export class Counter {
   constructor(config) {
     this.config = config;
-    this.element = document.getElementById(this.config.id);
+    this.element = config.element;
     this.count = this.config.count || 1;
     this._init();
   }
