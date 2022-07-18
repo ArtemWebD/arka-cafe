@@ -6,7 +6,7 @@ import { Observer } from "../observer/Observer";
  * @param renderSubscribers array of callbacks caused by changing the basket
  */
 export class Cart {
-  static _orders = [];
+  static _orders = {};
   static _observer = new Observer();
 
   constructor(config) {
