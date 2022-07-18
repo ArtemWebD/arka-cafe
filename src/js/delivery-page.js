@@ -1,6 +1,6 @@
 import { Cart } from "./modules/cart/Cart";
-import { Counter } from "./modules/counter/Counter";
 import { CardModal } from "./modules/modal/CardModal";
+import { ModalProduct } from "./modules/product/ModalProduct";
 import { Product } from "./modules/product/Product";
 
 export class DeliveryPage {
@@ -10,10 +10,9 @@ export class DeliveryPage {
   }
 
   init() {
-    // this._setModal();
+    this._setModal();
     this.items.forEach((item) => {
       new Product(item);
-      // this._setCartButtonListener(item, '.dishes__item', +item.dataset.id);
     });
   }
 
@@ -28,11 +27,7 @@ export class DeliveryPage {
         closeAnimationDuration: 300,
         body: item,
         overlayScroll: true,
-        openCallback: (modal) => {
-          this._setCardListener(modal, '.dishes-modal__body', +item.dataset.id);
-          const order = this.cart.getById(+item.dataset?.id);
-          this.cart.renderOrderCount(order);
-        },
+        openCallback: (modal) => new ModalProduct(modal.querySelector('.modal__body')),
       });
     });
   }
@@ -71,57 +66,5 @@ export class DeliveryPage {
         </div>
       </div>
   `;
-  }
-
-  _setCardListener(item, selector, id) {
-    const triggers = [
-      item.querySelector('.basket-button'),
-      item.querySelector('.plus'),
-    ];
-    const minusButton = item.querySelector('.minus');
-    const counter = item.querySelector('.counter');
-
-    triggers.forEach((trigger) => {
-      trigger.onclick = (event) => {
-        event.preventDefault();
-        
-        this.cart.add({
-          title: item.querySelector(`${selector}__title h3`).innerHTML,
-          image: item.querySelector(`${selector}__image img`).src,
-          price: +item.querySelector(`${selector}__price`)
-            .textContent
-            .replace('₽', '')
-            .replaceAll(' ', ''),
-          count: 1,
-          id,
-        });
-      }
-    });
-
-    minusButton.onclick = () => {
-      const count = +counter.innerText.replace('+ ', '');
-      if (count !== 0) {
-        this.cart.update(id, count - 1);
-      }
-    }
-  }
-
-  _setCartButtonListener(item, selector, id) {
-    const trigger = item.querySelector('.basket-button');
-
-    trigger.onclick = (event) => {
-      event.preventDefault();
-      
-      this.cart.add({
-        title: item.querySelector(`${selector}__title h3`).innerHTML,
-        image: item.querySelector(`${selector}__image img`).src,
-        price: +item.querySelector(`${selector}__price`)
-          .textContent
-          .replace('₽', '')
-          .replaceAll(' ', ''),
-        count: +item.querySelector('.counter')?.textContent || 1,
-        id,
-      });
-    }
   }
 }
