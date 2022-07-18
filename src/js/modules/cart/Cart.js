@@ -1,9 +1,9 @@
 import { Observer } from "../observer/Observer";
 
 /**
- * Объект конфиг принимает в себя следующие свойства:
- * @param id id элемента корзины
- * @param renderSubscribers массив коллбэков, вызываемых при изменении корзины
+ * The config object takes the following properties:
+ * @param id ID element of the cart
+ * @param renderSubscribers array of callbacks caused by changing the basket
  */
 export class Cart {
   static _orders = [];
@@ -42,27 +42,23 @@ export class Cart {
     } else {
       Cart._orders[id] = order;
     }
-    Cart._observer.observe(Cart._orders);
     this._render();
   }
 
   clear() {
     Cart._orders = {};
     localStorage.removeItem('orders');
-    Cart._observer.observe(Cart._orders);
     this._render();
   }
 
   update(id, count) {
     const order = Cart._orders[id];
     order.count = count;
-    Cart._observer.observe(Cart._orders);
     this._render();
   }
 
   remove(id) {
     delete Cart._orders[id];
-    Cart._observer.observe(Cart._orders);
     this._render();
   }
 
@@ -79,7 +75,6 @@ export class Cart {
   _getOrders() {
     const orders = localStorage.getItem('orders');
     Cart._orders = orders === 'undefined' ? {} : JSON.parse(orders) ;
-    Cart._observer.observe(Cart._orders);
     this._render();
   }
 
@@ -100,5 +95,7 @@ export class Cart {
       <span id='products'>${ordersTotal.count} /&nbsp;</span>
       <span id='total'>${new Intl.NumberFormat('ru').format(ordersTotal.total)} ₽</span>
     `;
+
+    Cart._observer.observe(Cart._orders);
   }
 }
