@@ -1,5 +1,3 @@
-import { Cart } from "../cart/Cart";
-import { Counter } from "../counter/Counter";
 import { Product } from "./Product";
 
 export class ModalProduct extends Product {
