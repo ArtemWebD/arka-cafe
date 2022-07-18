@@ -12,22 +12,26 @@ export class ModalProduct extends Product {
     this._initCounter();
   }
 
-  _update() {}
+  _update(orders) {
+    const order = orders[this._id];
+    const counter = this._element.querySelector('#counter .counter');
+    counter.innerText = order ? order.count : 0;
+  }
 
   _initCounter() {
     const order = this._cart.getById(this._id);
-    new Counter({
-      element: this._element.querySelector('#counter'),
-      min: 0,
-      count: order ? order.count : 0,
-      actionCallback: (count) => {
-        const order = this._cart.getById(this._id);
-        if (!order || order.count < count) {
-          this._cart.add(this._order, this._id);
-        } else {
-          this._cart.update(this._id, count);
-        }
-      },
-    });
+    const counter = this._element.querySelector('#counter');
+    const counterText = counter.querySelector('.counter');
+    const plusButton = counter.querySelector('.plus');
+    const minusButton = counter.querySelector('.minus');
+
+    counterText.innerText = order ? order.count : 0;
+
+    plusButton.onclick = () => this._cart.add(this._order, this._id);
+    minusButton.onclick = () => {
+      if (order && order.count > 0) {
+        this._cart.update(this._id, order.count - 1);
+      }
+    }
   }
 }
