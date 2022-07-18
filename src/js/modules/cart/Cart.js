@@ -21,8 +21,8 @@ export class Cart {
     }, 0);
   }
 
-  get orders() {
-    return Object.values(Cart._orders).filter((value) => value.count > 0);
+  get ordersId() {
+    return Object.keys(Cart._orders);
   }
 
   _init() {

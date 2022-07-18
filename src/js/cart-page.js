@@ -43,22 +43,23 @@ export class CartPage {
       return;
     }
     const body = this.element.querySelector('.cart-block__orders');
-    const orders = this.cart.orders;
+    const ordersId = this.cart.ordersId;
     
     body.innerHTML = '';
 
-    orders.forEach((order) => {
-      const html = this._getHtml(order);
+    ordersId.forEach((id) => {
+      const order = this.cart.getById(id);
+      const html = this._getHtml(order, id);
       body.insertAdjacentHTML('beforeend', html);
 
-      const element = body.querySelector(`.order[data-id=${order.id}]`);
+      const element = body.querySelector(`.order[data-id="${id}"]`);
       new CartPageProduct(element);
     });
   }
 
-  _getHtml(order) {
+  _getHtml(order, id) {
     return `
-      <div class="order" data-id='${order.id}'>
+      <div class="order" data-id='${id}'>
         <div class="order__body">
           <div class="order__body__image rounded">
             <img src="${order.image}" alt="${order.title}" class='image'>

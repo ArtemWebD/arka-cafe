@@ -1,3 +1,4 @@
+import { Counter } from "../counter/Counter";
 import { Product } from "./Product";
 
 export class CartPageProduct extends Product {
