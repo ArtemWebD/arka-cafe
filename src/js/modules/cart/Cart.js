@@ -42,6 +42,7 @@ export class Cart {
     } else {
       Cart._orders[id] = order;
     }
+    this._save();
     this._render();
   }
 
@@ -53,12 +54,18 @@ export class Cart {
 
   update(id, count) {
     const order = Cart._orders[id];
-    order.count = count;
+    if (count === 0) {
+      delete Cart._orders[id];
+    } else {
+      order.count = count;
+    }
+    this._save();
     this._render();
   }
 
   remove(id) {
     delete Cart._orders[id];
+    this._save();
     this._render();
   }
 
@@ -68,13 +75,17 @@ export class Cart {
 
   _setUnloadListener() {
     window.onunload = () => {
-      localStorage.setItem('orders', JSON.stringify(Cart._orders));
+      this._save();
     }
+  }
+
+  _save() {
+    localStorage.setItem('orders', JSON.stringify(Cart._orders));
   }
 
   _getOrders() {
     const orders = localStorage.getItem('orders');
-    Cart._orders = orders === 'undefined' ? {} : JSON.parse(orders) ;
+    Cart._orders = orders === 'undefined' ? {} : JSON.parse(orders);
     this._render();
   }
 
@@ -88,13 +99,12 @@ export class Cart {
 
     if (!ordersTotal.count) {
       element.innerHTML = 'Корзина';
-      return;
+    } else {
+      element.innerHTML = `
+        <span id='products'>${ordersTotal.count} /&nbsp;</span>
+        <span id='total'>${new Intl.NumberFormat('ru').format(ordersTotal.total)} ₽</span>
+      `;
     }
-
-    element.innerHTML = `
-      <span id='products'>${ordersTotal.count} /&nbsp;</span>
-      <span id='total'>${new Intl.NumberFormat('ru').format(ordersTotal.total)} ₽</span>
-    `;
 
     Cart._observer.observe(Cart._orders);
   }

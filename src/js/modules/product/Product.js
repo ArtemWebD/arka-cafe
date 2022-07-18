@@ -12,9 +12,9 @@ export class Product {
       ],
     });
     this._order = {
-      title: this._element.querySelector('h3').innerHTML,
-      image: this._element.querySelector('img').src,
-      price: +this._element.querySelector('.dishes__item__price')
+      title: this._element.querySelector('.title').innerHTML,
+      image: this._element.querySelector('.image').src,
+      price: +this._element.querySelector('.price')
         .textContent
         .replace('₽', '')
         .replaceAll(' ', ''),
@@ -30,13 +30,15 @@ export class Product {
 
   _update(orders) {
     const order = orders[this._id];
-    if (!order) {
+    const counter = this._element.querySelector('.dish-count');
+    if (!counter) {
       return;
     }
-    const counter = this._element.querySelector('.dish-count');
-    if (counter) {
-      counter.innerText = `+ ${order.count}`;
+    if (!order) {
+      counter.innerText = '';
+      return;
     }
+    counter.innerText = `+ ${order.count}`;
   }
 
   _setCartTrigger() {
