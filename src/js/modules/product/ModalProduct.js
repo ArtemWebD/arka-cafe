@@ -23,7 +23,7 @@ export class ModalProduct extends Product {
   _initCounter() {
     const order = this._cart.getById(this._id);
     new Counter({
-      element: this._element.querySelector('.counter'),
+      element: this._element.getElementById('counter'),
       min: 0,
       count: order ? order.count : 0,
       actionCallback: (count) => this._cart.update(this._id, count),
