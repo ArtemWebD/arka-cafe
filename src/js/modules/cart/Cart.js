@@ -85,7 +85,7 @@ export class Cart {
 
   _getOrders() {
     const orders = localStorage.getItem('orders');
-    Cart._orders = orders === 'undefined' ? {} : JSON.parse(orders);
+    Cart._orders = (!orders || orders === 'undefined') ? {} : JSON.parse(orders);
     this._render();
   }
 
