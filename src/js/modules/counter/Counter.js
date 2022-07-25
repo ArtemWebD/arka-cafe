@@ -1,8 +1,8 @@
 export class Counter {
   constructor(config) {
     this.config = config;
-    this.element = document.getElementById(this.config.id);
-    this.count = this.config.count || 1;
+    this.element = config.element;
+    this.count = this.config.count || config.min;
     this._init();
   }
 
@@ -11,7 +11,15 @@ export class Counter {
   }
 
   _init() {
+    this._setInitialCount();
     this._setListeners();
+  }
+
+  _setInitialCount() {
+    const counter = this.element.querySelector('.counter');
+    if (counter) {
+      counter.innerText = this.count;
+    }
   }
 
   _setListeners() {

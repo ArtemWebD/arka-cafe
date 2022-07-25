@@ -8,6 +8,16 @@
       &__subtitle {
         max-width: 410px;
       }
+
+      @media (max-width: $breakpoint-1) {
+        h2 {
+          max-width: 120px;
+        }
+
+        &__subtitle {
+          max-width: none;
+        }
+      }
     }
   }
 }

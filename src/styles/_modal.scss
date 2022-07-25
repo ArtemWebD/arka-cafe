@@ -1,25 +1,22 @@
 .modal {
   position: fixed;
-  height: calc(100% - 200px);
+  // height: calc(100% - 200px);
   max-width: fit-content;
+  height: 100%;
+  padding: 100px 0;
   z-index: -1;
   opacity: 0;
   transform: translate(-50%, -50%);
+  overflow-y: scroll;
   
   &__body {
     max-width: 610px;
-    height: 100%;
-    overflow-y: scroll;
     margin: 0 auto;
     padding: 220px 50px 70px 50px;
     background-color: $pale-3;
     border-top-left-radius: 318.5px;
     border-top-right-radius: 318.5px;
     transition: 2s ease-in;
-
-    &::-webkit-scrollbar {
-      width: 0;
-    }
   }
 
   &__close {
@@ -32,7 +29,11 @@
     background-position: center;
     position: absolute;
     right: 0%;
-    top: 0%;
+    top: 10%;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0;
   }
 }
 

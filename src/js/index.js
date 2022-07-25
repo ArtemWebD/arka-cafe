@@ -1,6 +1,6 @@
 import "../styles/global.scss";
 import { CartPage } from "./cart-page";
-import { DeliveryPage } from "./delivery";
+import { DeliveryPage } from "./delivery-page";
 import { CartFeedback } from "./modules/cart-feedback";
 import { Category } from "./modules/category/Category";
 import { FeedbackForm } from "./modules/feedback-form";

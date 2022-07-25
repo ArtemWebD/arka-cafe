@@ -96,10 +96,9 @@ export class Modal {
     if (!blur) {
       return;
     }
-    const body = this.modal.querySelector('.modal__body');
     blur.addEventListener('mousewheel', (event) => {
       event.preventDefault();
-      body.scrollTop += event.deltaY;
+      this.modal.scrollTop += event.deltaY;
     });
   }
 

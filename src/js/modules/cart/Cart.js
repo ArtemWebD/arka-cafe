@@ -1,5 +1,13 @@
+import { Observer } from "../observer/Observer";
+
+/**
+ * The config object takes the following properties:
+ * @param id ID element of the cart
+ * @param renderSubscribers array of callbacks caused by changing the basket
+ */
 export class Cart {
-  static orders = [];
+  static _orders = {};
+  static _observer = new Observer();
 
   constructor(config) {
     this._config = config;
@@ -7,58 +15,77 @@ export class Cart {
   }
 
   get total() {
-    return Cart.orders.reduce((acc, value) => {
+    return Object.values(Cart._orders).reduce((acc, value) => {
       acc += value.count * value.price;
       return acc;
     }, 0);
   }
 
-  add(order) {
-    const existedOrder = Cart.orders.find((value) => value.id === order.id);
-    if (existedOrder) {
-      existedOrder.count += order.count;
-    } else {
-      Cart.orders.push(order);
-    }
-    this._render();
-  }
-
-  clear() {
-    Cart.orders = [];
-    localStorage.removeItem('orders');
-    this._render();
-  }
-
-  update(id, count) {
-    const order = Cart.orders.find((value) => value.id === id);
-    if (!order) {
-      return;
-    }
-    order.count = count;
-    this._render();
-  }
-
-  remove(id) {
-    Cart.orders = Cart.orders.filter((value) => value.id !== id);
-    this._render();
+  get ordersId() {
+    return Object.keys(Cart._orders);
   }
 
   _init() {
     this._getOrders();
     this._setUnloadListener();
+    if (this._config.renderSubscribers) {
+      this._config.renderSubscribers.forEach((subscriber) => {
+        Cart._observer.subscribe(subscriber);
+      });
+    } 
+  }
+
+  add(order, id) {
+    const existedOrder = Cart._orders[id];
+    if (existedOrder) {
+      existedOrder.count += 1;
+    } else {
+      Cart._orders[id] = order;
+    }
+    this._save();
+    this._render();
+  }
+
+  clear() {
+    Cart._orders = {};
+    localStorage.removeItem('orders');
+    this._render();
+  }
+
+  update(id, count) {
+    const order = Cart._orders[id];
+    if (count === 0) {
+      delete Cart._orders[id];
+    } else {
+      order.count = count;
+    }
+    this._save();
+    this._render();
+  }
+
+  remove(id) {
+    delete Cart._orders[id];
+    this._save();
+    this._render();
+  }
+
+  getById(id) {
+    return Cart._orders[id];
   }
 
   _setUnloadListener() {
     window.onunload = () => {
-      if (Cart.orders && Cart.orders.length) {
-        localStorage.setItem('orders', JSON.stringify(Cart.orders));
-      }
+      this._save();
     }
   }
 
+  _save() {
+    localStorage.setItem('orders', JSON.stringify(Cart._orders));
+  }
+
   _getOrders() {
-    const orders = JSON.parse(localStorage.getItem('orders'));
-    Cart.orders = orders || [];
+    const orders = localStorage.getItem('orders');
+    Cart._orders = (!orders || orders === 'undefined') ? {} : JSON.parse(orders);
     this._render();
   }
 
@@ -73,17 +100,16 @@ export class Cart {
       acc.count += value.count;
       return acc;
     }, { total: 0, count: 0 });
-    element.innerHTML = `
-      <span id='products'>${ordersTotal.count} /&nbsp;</span>
-      <span id='total'>${new Intl.NumberFormat('ru').format(ordersTotal.total)} ₽</span>
-    `;
-    Cart.orders.forEach((order) => this._renderOrderCount(order));
-  }
 
-  _renderOrderCount(order) {
-    const element = document.querySelector(`div[data-id="${order.id}"] .dish-count`);
-    if (element) {
-      element.innerText = `+ ${order.count}`;
+    if (!ordersTotal.count) {
+      element.innerHTML = 'Корзина';
+    } else {
+      element.innerHTML = `
+        <span id='products'>${ordersTotal.count} /&nbsp;</span>
+        <span id='total'>${new Intl.NumberFormat('ru').format(ordersTotal.total)} ₽</span>
+      `;
     }
+
+    Cart._observer.observe(Cart._orders);
   }
 }

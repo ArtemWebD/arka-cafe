@@ -60,21 +60,38 @@
       </div>
     </div>
   </section>
-  <section class="gallery">
+  <section class="gallery slider-block">
     <div class="container">
       <div class="gallery__body">
-        <h2>
-          Галерея
-        </h2>
-        <div class="gallery__body__subtitle">
-          <span>
-            Приглашаем провести у нас любое праздничное <br>
-            и торжественное мероприятие. Стильная и уютная атмосфера в сочетании с оригинальным оформлением зала
-          </span>
-        </div>
-        <div class="gallery__body__images">
-          <img src="img/galery_1.png" alt="Галерея" class="animated-img">
-          <img src="img/galery_1.png" alt="Галерея" class="animated-img">
+        <div class="gallery__body__wrapper">
+          <div class="gallery__body__title">
+            <h2>
+              Галерея
+            </h2>
+            <div class="gallery__body__subtitle">
+              <span>
+                Приглашаем провести у нас любое праздничное <br>
+                и торжественное мероприятие. Стильная и уютная атмосфера в сочетании<br class="mobile-line-break"> с оригинальным оформлением зала
+              </span>
+            </div>
+          </div>
+          <div class="slider-block__body gallery__body__images">
+            <div class="slider-block__body__wrapper">
+              <div class="swiper-container">
+                <div class="swiper-wrapper">
+                  <%
+                    const gallerySlide = `
+                      <a href='gallery.html'>
+                        <img src='img/galery_1.png' alt='Галерея' class='animated-img'>
+                      </a>
+                    `;
+                  %>
+                  <%=_.template(require('../views/slide.html').default)({ content: gallerySlide, className: 'gallery__slide' })%>
+                  <%=_.template(require('../views/slide.html').default)({ content: gallerySlide, className: 'gallery__slide' })%>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="gallery__body__button">
           <a href="gallery.html" class="btn">

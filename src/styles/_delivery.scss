@@ -13,5 +13,17 @@
         max-width: 400px;
       }
     }
+
+    @media (max-width: $breakpoint-1) {
+      &__image {
+        padding: 0;
+      }
+
+      &__text {
+        h2 {
+          max-width: 180px;
+        }
+      }
+    }
   }
 }

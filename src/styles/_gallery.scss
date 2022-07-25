@@ -14,20 +14,31 @@
 
     &__images {
       margin-top: 76px;
+      padding: 0!important;
       display: flex;
       align-items: stretch;
       justify-content: stretch;
 
-      img {
-        margin: 0 15px;
-        max-width: 500px;
+      .swiper-container {
+        width: 100%;
 
-        &:first-child {
-          margin-left: 0;
-        }
+        .swiper-slide {
+          max-width: 500px;
+          margin: 0 15px;
 
-        &:last-child {
-          margin-right: 0;
+          a {
+            img {
+              max-height: 100%;
+            }
+          }
+
+          &:first-child {
+            margin-left: 0;
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
         }
       }
     }
@@ -39,6 +50,35 @@
       .btn {
         width: 248px;
         padding: 8px 0;
+      }
+    }
+
+    @media (max-width: $breakpoint-1) {
+      padding: 0 15px;
+
+      &__wrapper {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+
+      &__images {
+        margin-top: 0!important;
+      }
+
+      &__title {
+        margin-top: 30px;
+      }
+
+      h2 {
+        text-align: left;
+      }
+
+      &__subtitle {
+        text-align: left;
+
+        br {
+          display: none;
+        }
       }
     }
   }

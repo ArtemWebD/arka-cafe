@@ -34,6 +34,25 @@
         }
       }
     }
+
+    @media (max-width: $breakpoint-1) {
+      flex-direction: column;
+      padding: 0 15px;
+
+      &__image {
+        width: 100%;
+        padding: 0;
+      }
+
+      &__text {
+        margin-top: 30px;
+        padding: 0;
+
+        &__link {
+          margin-top: 15px;
+        }
+      }
+    }
   }
 
   .container {
@@ -43,6 +62,11 @@
       content: url('../img/weave_2.svg');
       display: block;
       margin-top: 100px;
+
+      @media (max-width: $breakpoint-1) {
+        content: url('../img/weave_2_mobile.svg');
+        margin-top: 60px;
+      }
     }
   }
 }
@@ -59,6 +83,14 @@
     &__image {
       padding-right: 60px;
       padding-left: 0;
+    }
+
+    @media (max-width: $breakpoint-1) {
+      flex-direction: column;
+
+      &__text, &__image {
+        padding: 0;
+      }
     }
   }
 }

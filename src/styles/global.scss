@@ -38,6 +38,11 @@ body {
   color: $black;
   background-color: $semi-brown;
   font-feature-settings: 'pnum' on, 'lnum' on;
+
+  @media (max-width: $breakpoint-1) {
+    font-size: 15px;
+    line-height: 22.5px;
+  }
 }
 
 * {
@@ -57,6 +62,10 @@ h1 {
 h2 {
   font-size: 45px;
   line-height: 100%;
+
+  @media (max-width: $breakpoint-1) {
+    font-size: 30px;
+  }
 }
 
 h3 {
@@ -89,6 +98,10 @@ img {
 
 section {
   padding-top: 100px;
+
+  @media (max-width: $breakpoint-1) {
+    padding-top: 60px;
+  }
 }
 
 button {
@@ -149,7 +162,7 @@ input[type=checkbox]:checked ~ label {
   padding: 0 20px;
 
   @media (max-width: $breakpoint-1) {
-    width: 100%;
+    width: 320px;
     padding: 0 15px;
   }
 }
@@ -185,6 +198,16 @@ input[type=checkbox]:checked ~ label {
     color: $pale-3;
     font-weight: 600;
   }
+
+  @media (max-width: $breakpoint-1) {
+    font-size: 15px;
+
+    &:hover {
+      background: inherit;
+      color: inherit;
+      font-weight: inherit;
+    }
+  }
 }
 
 .arrow-btn {
@@ -210,6 +233,16 @@ input[type=checkbox]:checked ~ label {
 
     &::after {
       margin-left: 30px;
+    }
+  }
+
+  @media (max-width: $breakpoint-1) {
+    font-size: 15px;
+    align-items: center;
+
+    &::after {
+      position: relative;
+      top: 4px;
     }
   }
 }
@@ -285,5 +318,23 @@ input[type=checkbox]:checked ~ label {
 
   &:hover {
     transform: scale(1.05);
+  }
+
+  @media (max-width: $breakpoint-1) {
+    &:hover {
+      transform: inherit;
+    }
+  }
+}
+
+.dish-count {
+  margin-left: 20px;
+}
+
+br.mobile-line-break {
+  display: none;
+
+  @media (max-width: $breakpoint-1) {
+    display: block;
   }
 }
