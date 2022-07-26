@@ -19,4 +19,28 @@
       padding-left: 21px;
     }
   }
+
+  @media (max-width: $breakpoint-1) {
+    padding: 30px 0 96px 0;
+
+    &__rights {
+      margin-top: 30px;
+      flex-direction: column-reverse;
+      white-space: normal;
+
+      &__offer, &__copyright {
+        padding: 0 15px;
+      }
+
+      &__copyright {
+        margin-top: 30px;
+        width: 100%;
+
+        span {
+          display: inline-block;
+          width: 100%;
+        }
+      }
+    }
+  }
 }

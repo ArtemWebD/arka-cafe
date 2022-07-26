@@ -61,6 +61,11 @@
       content: url('../img/weave_2.svg');
       display: block;
       margin-top: 100px;
+
+      @media (max-width: $breakpoint-1) {
+        content: url('../img/weave_2_mobile.svg');
+        margin-top: 60px;
+      }
     }
   }
 

@@ -261,6 +261,24 @@
       h1 {
         max-width: 197px;
       }
+
+      @media (max-width: $breakpoint-1) {
+        padding-right: 0;
+
+        h1 {
+          max-width: none;
+        }
+      }
+    }
+
+    @media (max-width: $breakpoint-1) {
+      &__subtitle {
+        max-width: 190px;
+
+        br {
+          display: none;
+        }
+      }
     }
   }
 }
@@ -273,11 +291,23 @@
       h1 {
         max-width: 197px;
       }
+
+      @media (max-width: $breakpoint-1) {
+        padding-right: 0;
+
+        h1 {
+          max-width: none;
+        }
+      }
     }
 
     &__button {
       button {
         width: 278px;
+
+        @media (max-width: $breakpoint-1) {
+          width: 100%;
+        }
       }
     }
   }
@@ -287,6 +317,10 @@
   .header__body {
     &__title {
       padding-right: 350px;
+
+      @media (max-width: $breakpoint-1) {
+        padding-right: 0;
+      }
     }
   }
 }
@@ -299,6 +333,12 @@
 
     &__contacts > div {
       margin-top: 22px;
+    }
+
+    @media (max-width: $breakpoint-1) {
+      &__title {
+        padding-right: 0;
+      }
     }
   }
 }

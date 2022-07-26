@@ -16,12 +16,28 @@
 
         &:hover {
           transform: scale(1.25);
+
+          @media (max-width: $breakpoint-1) {
+            transform: none;
+          }
         }
 
         &:active {
           color: $brown;
         }
       }
+
+      .basket-button {
+        display: none;
+
+        @media (max-width: $breakpoint-1) {
+          display: flex;
+        }
+      }
+    }
+
+    @media (max-width: $breakpoint-1) {
+      display: inline-block;
     }
   }
 
@@ -37,6 +53,19 @@
 
       &:nth-child(3), &:nth-child(4) {
         padding-right: 169px;
+      }
+    }
+
+    @media (max-width: $breakpoint-1) {
+      padding: 30px 0;
+
+      li {
+        padding: 0 0 0 15px;
+        margin-top: 20px;
+
+        &:first-child {
+          margin-top: 0;
+        }
       }
     }
   }

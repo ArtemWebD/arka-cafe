@@ -16,4 +16,27 @@
       text-transform: uppercase;
     }
   }
+
+  @media (max-width: $breakpoint-1) {
+    padding: 0 0 100px 0;
+
+    &__title {
+      max-width: 177px;
+      text-align: left;
+      padding: 0 15px;
+    }
+
+    &__cards {
+      margin-top: 67px;
+      padding: 0 15px;
+    }
+
+    &__card {
+      margin-top: 57px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
 }

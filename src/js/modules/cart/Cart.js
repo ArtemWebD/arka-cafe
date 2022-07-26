@@ -90,12 +90,14 @@ export class Cart {
   }
 
   _render() {
+    Cart._observer.observe(Cart._orders);
+
     const element = document.getElementById(this._config.id);
-    if (!Cart.orders || !Cart.orders.length) {
+    if (!Cart._orders) {
       element.innerHTML = '<span class="default-text">Корзина</span>';
       return;
     }
-    const ordersTotal = Cart.orders.reduce((acc, value) => {
+    const ordersTotal = Object.values(Cart._orders).reduce((acc, value) => {
       acc.total += value.count * value.price;
       acc.count += value.count;
       return acc;
@@ -109,7 +111,5 @@ export class Cart {
         <span id='total'>${new Intl.NumberFormat('ru').format(ordersTotal.total)} ₽</span>
       `;
     }
-
-    Cart._observer.observe(Cart._orders);
   }
 }
