@@ -4,11 +4,13 @@ export class Category {
   }
 
   _init() {
-    if (location.pathname !== '/delivery.html' && location.pathname !== '/cart.html') {
-      return;
+    document.fonts.onloadingdone = () => {
+      if (location.pathname !== '/delivery.html' && location.pathname !== '/cart.html') {
+        return;
+      }
+      this._getCategory();
+      this._setLinkTrigger();
     }
-    this._getCategory();
-    this._setLinkTrigger();
   }
 
   _getCategory() {
