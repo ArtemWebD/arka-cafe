@@ -342,3 +342,25 @@ br.mobile-line-break {
     display: block;
   }
 }
+
+.desktop-text {
+  @media (max-width: $breakpoint-1) {
+    display: none!important;
+  }
+}
+
+.mobile-text {
+  display: none!important;
+
+  @media (max-width: $breakpoint-1) {
+    display: inherit!important;
+  }
+}
+
+.mobile-button {
+  display: none!important;
+
+  @media (max-width: $breakpoint-1) {
+    display: inherit!important;
+  }
+}
