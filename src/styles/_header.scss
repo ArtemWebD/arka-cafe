@@ -281,6 +281,30 @@
       }
     }
   }
+
+  @media (max-width: $breakpoint-1) {
+    .header__navigation {
+      display: inline-block;
+      width: 100%;
+      margin-top: 60px;
+
+      .navbar__main {
+        display: none!important;
+      }
+
+      &::before {
+        content: url('../img/weave_2_mobile.svg');
+        display: block;
+        margin-bottom: 60px;
+      }
+    }
+
+    .container {
+      &::after {
+        display: none;
+      }
+    }
+  }
 }
 
 .header_banqueting {
