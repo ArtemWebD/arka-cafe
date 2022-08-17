@@ -42,6 +42,18 @@ export const initSliders = () => {
           <span class="${totalClass}"></span>
         `;
       }
-    }
+    },
+    breakpoints: {
+      1250: {
+        slidesPerView: 4,
+        spaceBetween: 30,
+        slidesPerGroup: 4,
+      },
+      300: {
+        slidesPerView: 2,
+        spaceBetween: 10,
+        slidesPerGroup: 2,
+      },
+    },
   });
 }
