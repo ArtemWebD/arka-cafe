@@ -36,6 +36,10 @@
           &::after {
             display: none;
           }
+
+          @media (max-width: $breakpoint-1) {
+            display: none;
+          }
         }
 
         .swiper-button-next {
@@ -47,6 +51,10 @@
           left: 0;
         }
       }
+    }
+
+    @media (max-width: $breakpoint-1) {
+      padding: 0;
     }
   }
 
