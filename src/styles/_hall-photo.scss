@@ -14,4 +14,48 @@
       height: 100%;
     }
   }
+
+  @media (max-width: $breakpoint-1) {
+    .container {
+      display: flex;
+      flex-direction: column-reverse;
+
+      &::after {
+        display: none;
+      }
+
+      &::before {
+        content: url('../img/weave_2_mobile.svg');
+        display: block;
+        margin-top: 60px;
+      }
+    }
+
+    &__button {
+      display: none;
+      margin-top: 30px;
+    }
+
+    .slider-block {
+      &__body {
+        margin-top: 0;
+      }
+
+      &__text {
+        margin-top: 30px;
+      }
+
+      &__title, &__description {
+        text-align: left;
+      }
+
+      &__description {
+        margin-top: 15px;
+      }
+    }
+
+    &__slider {
+      overflow: visible!important;
+    }
+  }
 }

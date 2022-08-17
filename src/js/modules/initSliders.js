@@ -10,7 +10,17 @@ export const initSliders = () => {
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
-    }
+    },
+    breakpoints: {
+      1250: {
+        slidesPerView: 2,
+        spaceBetween: 0,
+      },
+      300: {
+        slidesPerView: 1,
+        spaceBetween: 15,
+      },
+    },
   });
 
   new Swiper('.banquet-menu__slider', {
