@@ -130,4 +130,8 @@
 
 .banner_contacts {
   padding-top: 174px;
+
+  @media (max-width: $breakpoint-1) {
+    padding-top: 45px;
+  }
 }
