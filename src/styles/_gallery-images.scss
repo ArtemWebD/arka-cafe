@@ -45,5 +45,36 @@
       display: block;
       margin-top: 100px;
     }
+
+    @media (max-width: $breakpoint-1) {
+      &::after {
+        content: url('../img/weave_2_mobile.svg');
+        margin-top: 60px;
+      }
+    }
+  }
+
+  @media (max-width: $breakpoint-1) {
+    padding-top: 60px;
+
+    &__body {
+      padding: 0 15px;
+
+      &__item {
+        margin: 0 0 15px 0!important;
+        width: auto;
+        height: fit-content;
+        line-height: 0;
+        max-width: 100%;
+
+        &:last-child {
+          margin-bottom: 0!important;
+        }
+      }
+    }
+
+    &__button {
+      display: none;
+    }
   }
 }

@@ -364,3 +364,11 @@ br.mobile-line-break {
     display: inherit!important;
   }
 }
+
+.mobile-section {
+  display: none!important;
+
+  @media (max-width: $breakpoint-1) {
+    display: inherit!important;
+  }
+}
