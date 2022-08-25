@@ -36,5 +36,46 @@
         width: 100%;
       }
     }
+
+    @media (max-width: $breakpoint-1) {
+      flex-direction: column;
+      padding: 40px 0;
+      align-items: flex-start;
+      height: 292px;
+      position: relative;
+
+      * {
+        width: auto;
+        height: auto;
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      &__image {
+        width: 93px;
+        height: 100px;
+      }
+
+      &__title {
+        margin-top: 20px;
+      }
+
+      &__price {
+        margin-top: 5px;
+      }
+
+      &__counter, &__button {
+        position: absolute;
+        right: 0;
+      }
+
+      &__counter {
+        bottom: 40px;
+      }
+
+      &__button {
+        top: 82px;
+      }
+    }
   }
 }

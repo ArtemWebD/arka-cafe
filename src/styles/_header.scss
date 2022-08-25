@@ -377,4 +377,16 @@
       display: none;
     }
   }
+
+  @media (max-width: $breakpoint-1) {
+    .container {
+      &::after {
+        display: none;
+      }
+    }
+
+    .header__info {
+      border-bottom: 2px solid $brown;
+    }
+  }
 }
