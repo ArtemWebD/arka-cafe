@@ -5,13 +5,13 @@ const modalHtml = `
   <div class='modal__body feedback__body'>
     <div class='modal__body__title feedback__body__title'>
       <span>
-        Оставьте свои контакты и наш менеджер свяжется с вами в ближайшее время
+        Оставьте свои контакты <br class='mobile-line-break'>и наш менеджер свяжется с вами в ближайшее время
       </span>
     </div>
     <form class='modal__body__form feedback__body__form'>
       <input type='text' name='name' placeholder='Имя'>
       <input type='tel' name='phone' placeholder='Телефон'>
-      <button type='submit' class='btn'>Оставить заявку</button>
+      <button type='submit' class='btn mobile-btn'>Оставить заявку</button>
       <input type='checkbox' name='agreement' id='agreement' checked='true'>
       <label for='agreement'>Согласие на обработку персональных данных</label>
     </form>
@@ -74,19 +74,22 @@ export class FeedbackForm {
     }
     const body = this.modal.modal.querySelector('.modal__body');
     body.innerHTML = `
-      <div class='modal__body__title feedback__body__title'>
+      <div class='modal__body__title feedback__body__title feedback__body__title_final'>
         <h3>
-          Ваша заявка успешно оставлена
+          Ваша заявка <br class='mobile-line-break'>успешно оставлена
         </h3>
       </div>
       <div class='modal__body__subtitle feedback__body__subtitle'>
         <span>
           Для более быстрого подтверждения заявки, <br>
-          вы так же можете позвонить нам по телефону +7 (963) 466-12-26
+          вы так же можете позвонить нам <br class='mobile-line-break'>по телефону
+        </span>
+        <span class='feedback__body__phone'>
+          +7 (963) 466-12-26
         </span>
       </div>
       <div class='modal__body__button feedback__body__button'>
-        <button class='btn' data-modal='feedback' data-action='close'>
+        <button class='btn mobile-btn' data-modal='feedback' data-action='close'>
           Закрыть
         </button>
       </div>

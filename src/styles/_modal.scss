@@ -30,6 +30,11 @@
     position: absolute;
     right: 0%;
     top: 10%;
+
+    @media (max-width: $breakpoint-1) {
+      width: 31px;
+      height: 31px;
+    }
   }
 
   &::-webkit-scrollbar {

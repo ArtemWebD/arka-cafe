@@ -149,6 +149,14 @@ input[type=checkbox] + label {
     background-repeat: no-repeat;
     background-position: center;
   }
+
+  @media (max-width: $breakpoint-1) {
+    font-size: 12px;
+
+    &::before {
+      width: 22px;
+    }
+  }
 }
 
 input[type=checkbox]:checked ~ label {
@@ -371,5 +379,16 @@ br.mobile-line-break {
 
   @media (max-width: $breakpoint-1) {
     display: inherit!important;
+  }
+}
+
+.mobile-btn {
+  @media (max-width: $breakpoint-1) {
+    border: none;
+    background-color: $pale-3;
+
+    &:hover, &:active, &:focus {
+      background-color: $pale-3;
+    }
   }
 }

@@ -65,6 +65,66 @@
     top: 0%;
     right: 0%;
   }
+
+  @media (max-width: $breakpoint-1) {
+    padding: 29px 30px 81px 30px;
+    height: 100%;
+    overflow-y: auto;
+
+    &__body {
+      height: auto;
+      position: relative;
+      width: 260px;
+      border-radius: 200px 200px 0px 0px;
+      padding: 139px 30px 40px 30px;
+
+      &__title {
+        text-align: left;
+
+        &_final {
+          text-align: center;
+        }
+      }
+
+      &__form {
+        margin-top: 40px;
+
+        input {
+          margin-right: 0;
+          margin-top: 30px;
+
+          &:first-child {
+            margin-top: 0;
+          }
+        }
+      }
+
+      &__phone {
+        display: inline-block;
+        margin-top: 30px;
+      }
+
+      &__button {
+        margin: 0;
+      }
+
+      .mobile-btn {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: calc(100% + 10px);
+        margin: 0;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+
+    .modal__close {
+      top: 29px;
+    }
+  }
 }
 
 .feedback.modal-enter, .cart-feedback.modal-enter {
