@@ -10,6 +10,7 @@
     height: 2px;
     background-color: $dark-brown;
     position: relative;
+    transition: .25s ease-in;
 
     &::after, &::before {
       content: "";
@@ -19,6 +20,7 @@
       background-color: $dark-brown;
       position: absolute;
       left: 0;
+      transition: .25s ease-in;
     }
 
     &::after {
@@ -27,6 +29,22 @@
 
     &::before {
       top: -7px;
+    }
+  }
+}
+
+.burger.burger_active {
+  span {
+    background-color: transparent;
+
+    &::after {
+      bottom: 0;
+      transform: rotate(45deg);
+    }
+
+    &::before {
+      top: 0;
+      transform: rotate(-45deg);
     }
   }
 }

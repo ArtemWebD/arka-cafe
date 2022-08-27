@@ -1,0 +1,70 @@
+.mobile-nav {
+  display: none;
+
+  @media (max-width: $breakpoint-1) {
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 70px);
+    top: -1000%;
+    left: 0;
+    z-index: 10;
+    overflow-y: scroll;
+    transition: .25s ease-in-out;
+
+    &__links {
+      background-color: $pale-3;
+      padding: 25px 0 35px 15px;
+
+      ul {
+        flex-direction: column;
+        align-items: flex-start;
+
+        li {
+          margin-top: 20px;
+
+          &:first-child {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+
+    &__social {
+      background-color: $pale-3;
+      padding: 20px 0 21px 15px;
+      margin-top: 10px;
+
+      li {
+        margin-top: 10px;
+
+        &:first-child {
+          margin: 0;
+        }
+      }
+    }
+
+    &__button {
+      width: 100%;
+      margin-top: 10px;
+
+      .btn {
+        width: 100%;
+        background-color: $pale-3;
+      }
+    }
+  }
+}
+
+.mobile-nav.mobile-nav_active {
+  top: calc(100% + 10px);
+}
+
+.mobile-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 70px;
+  background-color: $semi-brown;
+}
