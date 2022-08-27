@@ -40,26 +40,36 @@ export class DeliveryPage {
           <img src='${image.src}' alt='${image.alt || ''}' class='image'>
         </div>
         <div class='modal__body__title dishes-modal__body__title'>
-          <h3 class='title'>${title.innerText}</h3>
+          <h3 class='title'>${title.innerHTML}</h3>
         </div>
         <div class='modal__body__weight dishes-modal__body__weight'>
           <span>250 г</span>
         </div>
         <div class='modal__body__description dishes-modal__body__description'>
-          <span>Песочная основа с творожным муссом, покрытым карамельным соусом с белым шоколадом и кельтской солью.</span>
+          <span>Песочная основа с творожным муссом, покрытым карамельным соусом с белым шоколадом 
+          <br class='mobile-line-break'>и кельтской солью.</span>
         </div>
         <div class='modal__body__price dishes-modal__body__price'>
           <span class='price'>${price.innerText}</span>
         </div>
-        <div class='modal__body__button dishes-modal__body__button'>
-          <a href='#' class='basket-button'>
-            Добавить в корзину
-          </a>
+        <div class='dishes-modal__body__buttons'>
+          <div class='modal__body__button dishes-modal__body__button'>
+            <a href='#' class='basket-button'>
+              Добавить в корзину
+            </a>
+          </div>
+          <div class='modal__body__count dishes-modal__body__count counter-block' id='counter'>
+            <span class='minus' data-action='minus'></span>
+            <span class='counter'></span>
+            <span class='plus' data-action='plus'></span>
+          </div>
         </div>
-        <div class='modal__body__count dishes-modal__body__count counter-block' id='counter'>
-          <span class='minus' data-action='minus'></span>
-          <span class='counter'></span>
-          <span class='plus' data-action='plus'></span>
+        <div class='mobile-close' data-modal='dishes-modal' data-action='close'>
+          <a href="#" data-modal='dishes-modal' data-action='close'>
+            <span data-modal='dishes-modal' data-action='close'>
+              Закрыть
+            </span>
+          </a>
         </div>
       </div>
   `;
