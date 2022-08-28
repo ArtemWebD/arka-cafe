@@ -27,6 +27,7 @@ export class ModalProduct extends Product {
 
     plusButton.onclick = () => this._cart.add(this._order, this._id);
     minusButton.onclick = () => {
+      const order = this._cart.getById(this._id);
       if (order && order.count > 0) {
         this._cart.update(this._id, order.count - 1);
       }
