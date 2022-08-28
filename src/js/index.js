@@ -7,6 +7,7 @@ import { Category } from "./modules/category/Category";
 import { FeedbackForm } from "./modules/feedback-form";
 import { ImageModals } from "./modules/image-modal";
 import { initSliders } from "./modules/initSliders";
+import { Lightbox } from "./modules/lightbox/Lightbox";
 import { ScrollButton } from "./modules/scroll-top/ScrollButton";
 
 window.onload = () => {
@@ -14,12 +15,13 @@ window.onload = () => {
 
   const deliveryPage = new DeliveryPage();
   const imageModals = new ImageModals(['.banquet-menu__slide']);
-  const galleryModals = new ImageModals(['.gallery-images__body__item'], 'gallery-modal');
+  const galleryModals = new ImageModals(['.gallery-images__body__item', '.slide__image'], 'gallery-modal');
   const cartPage = new CartPage();
 
   new FeedbackForm();
   new CartFeedback();
   new Category();
+  new Lightbox();
   new ScrollButton({
     triggerElement: '#trigger-scroll',
     button: '.scroll-button',
