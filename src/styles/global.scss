@@ -13,6 +13,7 @@
 @import "order";
 @import "scroll-button";
 @import "header";
+@import "lightbox";
 @import "banqueting-hall";
 @import "delivery";
 @import "gallery";
@@ -27,6 +28,7 @@
 @import "gallery-images";
 @import "cart-block";
 @import "mobile-nav";
+@import "images-slider";
 @import "footer";
 
 body {
@@ -390,5 +392,13 @@ br.mobile-line-break {
     &:hover, &:active, &:focus {
       background-color: $pale-3;
     }
+  }
+}
+
+.mobile-section {
+  display: none;
+
+  @media (max-width: $breakpoint-1) {
+    display: block;
   }
 }
