@@ -79,4 +79,18 @@
       backdrop-filter: blur(10px);
     }
   }
+
+  @media (max-width: $breakpoint-1) {
+    animation: mobileBlurAppearance .2s forwards;
+
+    @keyframes mobileBlurAppearance {
+      from {
+        background-color: none;
+      }
+
+      to {
+        background-color: $semi-brown;
+      }
+    }
+  }
 }
