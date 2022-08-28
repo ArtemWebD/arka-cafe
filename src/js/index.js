@@ -1,5 +1,6 @@
 import "../styles/global.scss";
 import { CartPage } from "./cart-page";
+import { MOBILE_BREAKPOINT } from "./constants";
 import { DeliveryPage } from "./delivery-page";
 import { Burger } from "./modules/burger/Burger";
 import { CartFeedback } from "./modules/cart-feedback";
@@ -21,7 +22,6 @@ window.onload = () => {
   new FeedbackForm();
   new CartFeedback();
   new Category();
-  new Lightbox();
   new ScrollButton({
     triggerElement: '#trigger-scroll',
     button: '.scroll-button',
@@ -30,6 +30,10 @@ window.onload = () => {
     burgerSelector: '.burger',
     menuSelector: '.mobile-nav',
   });
+
+  if (window.innerWidth <= MOBILE_BREAKPOINT) {
+    new Lightbox();
+  }
 
   deliveryPage.init();
   imageModals.init();
