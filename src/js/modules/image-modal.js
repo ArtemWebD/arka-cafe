@@ -15,9 +15,21 @@ export class ImageModals {
 
     elements.forEach((element) => {
       const image = element.querySelector('img');
+      const slideNumber = element.querySelector('.slide__number');
       const html = `
         <div class='modal__body ${this._id}__body'>
-          <img src='${image?.src}' alt='${image?.alt}'>
+          ${
+            slideNumber 
+              ? `
+                  <div class='modal__number'>
+                    <span>
+                      ${slideNumber?.innerText}
+                    </span>
+                  </div>
+                `
+              : ''
+          }
+          <img class='lightbox' src='${image?.src}' alt='${image?.alt}'>
         </div>
       `;
       
