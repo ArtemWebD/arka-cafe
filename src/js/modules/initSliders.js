@@ -56,4 +56,11 @@ export const initSliders = () => {
       },
     },
   });
+
+  new Swiper('.images-slider__slider', {
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    spaceBetween: 15,
+    loop: true,
+  });
 }
