@@ -46,7 +46,8 @@
           color: $dark-brown;
 
           &::after {
-            content: ' / ';
+            content: '/';
+            margin: 0 5px;
             color: $dark-brown;
           }
         }
