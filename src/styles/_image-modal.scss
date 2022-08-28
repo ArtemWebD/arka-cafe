@@ -9,6 +9,49 @@
   &__body {
     max-width: 100%;
   }
+
+  .modal__number {
+    display: none;
+  }
+
+  @media (max-width: $breakpoint-1) {
+    width: 100%;
+    padding: 65px 30px 88px 30px;
+    background-color: $pale-3;
+
+    .modal__close {
+      background-image: url('../img/close_mobile.svg');
+      top: 30px;
+      right: 30px;
+    }
+
+    &__body {
+      width: 100%;
+      max-width: 264px;
+      height: 376px;
+      border: 2px solid $brown;
+      border-radius: 200px 200px 0px 0px;
+      padding: 29px 30px 33px 30px;
+
+      img {
+        height: 265px;
+        width: 100%;
+      }
+
+      img.lightbox_active {
+        height: 529px;
+        top: 65px;
+        padding-bottom: 50px;
+      }
+    }
+
+    .modal__number {
+      display: block;
+      text-align: center;
+      color: $brown;
+      margin-bottom: 25px;
+    }
+  }
 }
 
 .image-modal.modal-enter, .image-modal.modal-active, .gallery-modal.modal-enter, .gallery-modal.modal-active {
