@@ -104,10 +104,10 @@ export class Cart {
     }, { total: 0, count: 0 });
 
     if (!ordersTotal.count) {
-      element.innerHTML = 'Корзина';
+      element.innerHTML = '<span id="default-cart-text">Корзина</span>';
     } else {
       element.innerHTML = `
-        <span id='products'>${ordersTotal.count} /&nbsp;</span>
+        <span id='products'>${ordersTotal.count}</span>
         <span id='total'>${new Intl.NumberFormat('ru').format(ordersTotal.total)} ₽</span>
       `;
     }
