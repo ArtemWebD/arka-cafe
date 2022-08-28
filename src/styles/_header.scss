@@ -44,6 +44,11 @@
 
         #products {
           color: $dark-brown;
+
+          &::after {
+            content: ' / ';
+            color: $dark-brown;
+          }
         }
 
         &::before {
@@ -97,14 +102,32 @@
       &__cart {
         width: 100px;
         border-right: none;
+        position: relative;
 
         &__btn {
           display: inline-block;
           width: 100%;
           text-align: center;
 
-          span {
+          #default-cart-text {
             display: none;
+          }
+
+          #products {
+            position: absolute;
+            right: 20px;
+            top: 5px;
+
+            &::after {
+              display: none;
+            }
+          }
+
+          #total {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
           }
         }
       }
