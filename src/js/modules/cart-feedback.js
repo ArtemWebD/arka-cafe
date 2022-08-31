@@ -1,5 +1,6 @@
 import { FeedbackForm } from "./feedback-form";
 import { Modal } from "./modal/Modal";
+import { Cart } from "./cart/Cart";
 import { InputMask } from "imask";
 
 const modalHtml = `
@@ -22,6 +23,7 @@ const modalHtml = `
 export class CartFeedback extends FeedbackForm {
   constructor() {
     super();
+    this.cart = new Cart();
   }
 
   _createModal() {
@@ -35,7 +37,7 @@ export class CartFeedback extends FeedbackForm {
         new InputMask(input, {
           mask: '+7 (000) 000-00-00',
         });
-
+        
         this._setFormListener(modal);
         super._setCheckboxListener(modal);
       },
