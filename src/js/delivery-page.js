@@ -43,11 +43,12 @@ export class DeliveryPage {
           <h3 class='title'>${title.innerHTML}</h3>
         </div>
         <div class='modal__body__weight dishes-modal__body__weight'>
-          <span>250 г</span>
+          <span>${item.dataset?.weight} г</span>
         </div>
         <div class='modal__body__description dishes-modal__body__description'>
-          <span>Песочная основа с творожным муссом, покрытым карамельным соусом с белым шоколадом 
-          <br class='mobile-line-break'>и кельтской солью.</span>
+          <span>
+            ${item.dataset?.description}
+          </span>
         </div>
         <div class='modal__body__price dishes-modal__body__price'>
           <span class='price'>${price.innerText}</span>
