@@ -22,8 +22,16 @@
         margin-right: 30px;
       }
 
+      input[name=address] {
+        width: 285px;
+        max-width: 100%;
+        margin-right: 0;
+      }
+
       button {
         width: 285px;
+        height: fit-content!important;
+        margin-top: 30px;
       }
 
       button.visibility-hidden {
@@ -32,6 +40,7 @@
 
       label {
         margin-top: 50px;
+        width: 100%;
       }
     }
 

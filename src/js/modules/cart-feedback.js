@@ -13,6 +13,7 @@ const modalHtml = `
     <form class='modal__body__form feedback__body__form'>
       <input type='text' name='name' placeholder='Имя'>
       <input type='tel' name='phone' placeholder='Телефон'>
+      <input type='text' name='address' placeholder='Адрес'>
       <button type='submit' class='btn mobile-btn'>Оставить заявку</button>
       <input type='checkbox' name='agreement' id='agreement' checked='true'>
       <label for='agreement'>Согласие на обработку персональных данных</label>
