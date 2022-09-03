@@ -24,7 +24,7 @@ const modalHtml = `
 export class CartFeedback extends FeedbackForm {
   constructor() {
     super();
-    this.cart = new Cart();
+    this.cart = new Cart({ id: 'cart' });
   }
 
   _createModal() {
